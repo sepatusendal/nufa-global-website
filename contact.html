@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — NUFA Global Education</title>
+<meta name="description" content="Hubungi NUFA Global Education untuk konsultasi program dan kemitraan sekolah.">
+
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="NUFA Global Education"></a>
+    <nav class="nav-links">
+      <div class="nav-item"><a href="index.html">Beranda</a></div>
+      <div class="nav-item has-dropdown">
+        <a href="about.html">Tentang ▾</a>
+        <div class="dropdown-menu">
+          <a href="about.html">Tentang Kami</a>
+          <a href="career.html">Karier</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="programs.html">Program ▾</a>
+        <div class="dropdown-menu">
+          <a href="programs.html">Semua Program</a>
+          <a href="program-english-course.html">English Course</a>
+          <a href="program-english-camp.html">English Camp</a>
+          <a href="program-immersion.html">Immersion Program</a>
+          <a href="program-study-abroad.html">Study Abroad Australia</a>
+          <a href="program-native-speaker.html">Native English Speaker</a>
+          <a href="program-teacher-training.html">Teacher Training for English</a>
+          <a href="school-partnership.html">Kemitraan Sekolah</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <a href="global.html">Global ▾</a>
+        <div class="dropdown-menu">
+          <a href="global.html">Mitra & Negara</a>
+          <a href="gallery.html">Galeri</a>
+          <a href="testimonials.html">Testimoni</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="news-events.html">Berita & Event</a></div>
+      <div class="nav-item"><a href="faq.html" class="active">FAQ</a></div>
+    </nav>
+    <div class="nav-cta">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="contact.html" class="btn btn-primary">Konsultasi Gratis</a>
+    </div>
+  </div>
+</header>
+
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Beranda</a> / Kontak</div>
+    <div class="eyebrow">Hubungi Kami</div>
+    <h1>Mari diskusikan kebutuhan sekolah Anda.</h1>
+    <p class="lead">Tim kami siap membantu merancang program pendidikan internasional yang sesuai dengan visi sekolah Anda.</p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:90px;">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <div class="eyebrow">Info Kontak</div>
+      <h2 class="section-title">Kami merespons dalam 1x24 jam kerja</h2>
+      <div style="margin-top:30px;">
+        <div class="contact-info-item">
+          <div class="ic">📍</div>
+          <div><h5>Kantor Pusat</h5><p>Jakarta, Indonesia</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ic">✉️</div>
+          <div><h5>Email</h5><p>info@nufaglobaledu.com</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ic">📞</div>
+          <div><h5>Telepon / WhatsApp</h5><p>+62 8xx-xxxx-xxxx</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ic">🌐</div>
+          <div><h5>Website</h5><p>www.nufaglobaledu.com</p></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contact-form">
+      <div class="form-row">
+        <div class="field">
+          <label for="f-name">Nama Lengkap</label>
+          <input type="text" id="f-name" required placeholder="Nama Anda">
+        </div>
+        <div class="field">
+          <label for="f-school">Nama Sekolah / Institusi</label>
+          <input type="text" id="f-school" placeholder="Nama sekolah/yayasan">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" required placeholder="email@sekolah.sch.id">
+        </div>
+        <div class="field">
+          <label for="f-phone">No. HP / WhatsApp</label>
+          <input type="tel" id="f-phone" placeholder="08xx-xxxx-xxxx">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-interest">Program yang Diminati</label>
+        <select id="f-interest">
+          <option>English Education</option>
+          <option>Native English Speaker</option>
+          <option>Teacher Development</option>
+          <option>International Immersion</option>
+          <option>Study Abroad</option>
+          <option>Educational Technology</option>
+          <option>Lainnya</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-message">Pesan</label>
+        <textarea id="f-message" placeholder="Ceritakan kebutuhan sekolah Anda..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Kirim Permintaan Konsultasi</button>
+      <p class="form-note">Kami akan merespons dalam 1x24 jam kerja.</p>
+    </form>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="NUFA Global Education">
+        <p>International Education Ecosystem Company — menghubungkan sekolah, guru, siswa, dan institusi global dalam satu ekosistem pendidikan yang terintegrasi.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Program</h5>
+        <ul>
+          <li><a href="programs.html">Semua Program</a></li>
+          <li><a href="school-partnership.html">Kemitraan Sekolah</a></li>
+          <li><a href="global.html">Mitra Internasional</a></li>
+          <li><a href="gallery.html">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Perusahaan</h5>
+        <ul>
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="career.html">Karier</a></li>
+          <li><a href="news-events.html">Berita & Event</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <ul>
+          <li><a href="mailto:info@nufaglobaledu.com">info@nufaglobaledu.com</a></li>
+          <li><a href="contact.html">Konsultasi Gratis</a></li>
+          <li><a href="https://www.nufaglobaledu.com">www.nufaglobaledu.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PT NUFA Global Education. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">IN</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Kembali ke atas">↑</button>
+
+<script src="assets/site-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
