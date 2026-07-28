@@ -208,7 +208,17 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') closeLightbox();
   });
 
-  /* Contact form -> mailto fallback (static hosting friendly) */
+  /* Contact form -> submits into a Google Form (responses land in a Google Sheet) */
+  var GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeMpeguYKku3eV5gwkPiqJTHhLPUtqBGFvv7dIiLC0PnTb4hA/formResponse';
+  var GFORM_ENTRIES = {
+    name: 'entry.191453223',
+    school: 'entry.1674040051',
+    email: 'entry.838742538',
+    phone: 'entry.1059957012',
+    interest: 'entry.563354993',
+    message: 'entry.1179613016'
+  };
+
   var form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -220,16 +230,42 @@ document.addEventListener('DOMContentLoaded', function () {
       var interest = document.getElementById('f-interest').value;
       var message = document.getElementById('f-message').value.trim();
 
-      var subject = encodeURIComponent('Konsultasi Program — ' + (school || name));
-      var body = encodeURIComponent(
-        'Nama: ' + name + '\n' +
-        'Sekolah/Institusi: ' + school + '\n' +
-        'Email: ' + email + '\n' +
-        'No. HP/WA: ' + phone + '\n' +
-        'Program yang diminati: ' + interest + '\n\n' +
-        'Pesan:\n' + message
-      );
-      window.location.href = 'mailto:info@nufaglobaledu.com?subject=' + subject + '&body=' + body;
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Mengirim...';
+
+      var data = new FormData();
+      data.append(GFORM_ENTRIES.name, name);
+      data.append(GFORM_ENTRIES.school, school);
+      data.append(GFORM_ENTRIES.email, email);
+      data.append(GFORM_ENTRIES.phone, phone);
+      data.append(GFORM_ENTRIES.interest, interest);
+      data.append(GFORM_ENTRIES.message, message);
+
+      fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: data })
+        .then(function () {
+          submitBtn.textContent = 'Terkirim! ✓';
+          form.reset();
+          setTimeout(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }, 4000);
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          var subject = encodeURIComponent('Konsultasi Program — ' + (school || name));
+          var body = encodeURIComponent(
+            'Nama: ' + name + '\n' +
+            'Sekolah/Institusi: ' + school + '\n' +
+            'Email: ' + email + '\n' +
+            'No. HP/WA: ' + phone + '\n' +
+            'Program yang diminati: ' + interest + '\n\n' +
+            'Pesan:\n' + message
+          );
+          window.location.href = 'mailto:info@nufaglobaledu.com?subject=' + subject + '&body=' + body;
+        });
     });
   }
 
