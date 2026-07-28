@@ -245,12 +245,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fetch(GFORM_ACTION, { method: 'POST', mode: 'no-cors', body: data })
         .then(function () {
-          submitBtn.textContent = 'Terkirim! ✓';
           form.reset();
-          setTimeout(function () {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-          }, 4000);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          var successPanel = document.getElementById('form-success');
+          if (successPanel) {
+            form.style.display = 'none';
+            successPanel.classList.remove('show');
+            void successPanel.offsetWidth; /* restart animation on repeat submits */
+            successPanel.classList.add('show');
+          }
         })
         .catch(function () {
           submitBtn.disabled = false;
@@ -267,6 +271,14 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = 'mailto:info@nufaglobaledu.com?subject=' + subject + '&body=' + body;
         });
     });
+
+    var successResetBtn = document.getElementById('form-success-reset');
+    if (successResetBtn) {
+      successResetBtn.addEventListener('click', function () {
+        document.getElementById('form-success').classList.remove('show');
+        form.style.display = '';
+      });
+    }
   }
 
   /* Smooth scroll for in-page anchors */
