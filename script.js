@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (heroSource) heroSource.src = CONFIG.heroVideoUrl;
       else heroVideo.src = CONFIG.heroVideoUrl;
       heroVideo.load();
+      /* Safari/iOS sometimes won't resume autoplay on its own after a
+         programmatic load() — nudge it once the new source is ready. */
+      heroVideo.play().catch(function () {});
     }
     if (CONFIG.heroVideoPoster) heroVideo.setAttribute('poster', CONFIG.heroVideoPoster);
   }
