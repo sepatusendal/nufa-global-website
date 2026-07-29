@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/nufg4418/public_html/
-    - /bin/cp -R .htaccess about.html career.html contact.html faq.html gallery.html global.html index.html news-events.html program-english-camp.html program-english-course.html program-immersion.html program-native-speaker.html program-study-abroad.html program-teacher-training.html programs.html school-partnership.html script.js style.css testimonials.html assets $DEPLOYPATH
+    - /bin/cp -R .htaccess about.html article.html career.html contact.html faq.html gallery.html global.html index.html news-events.html program-english-camp.html program-english-course.html program-immersion.html program-native-speaker.html program-study-abroad.html program-teacher-training.html programs.html school-partnership.html script.js style.css testimonials.html assets $DEPLOYPATH
