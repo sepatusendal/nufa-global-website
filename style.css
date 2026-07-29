@@ -289,8 +289,12 @@ a:focus-visible, button:focus-visible, .btn:focus-visible {
   cursor: pointer;
   padding: 6px;
 }
-.nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: background 0.3s ease; }
+.nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: background 0.3s ease, transform 0.3s ease, opacity 0.2s ease; }
 #navbar.scrolled .nav-toggle span { background: var(--navy); }
+#navbar.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#navbar.open .nav-toggle span:nth-child(2) { opacity: 0; }
+#navbar.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+#navbar.open .nav-toggle span { background: var(--navy); }
 /* The mobile flyout panel always has a light background, so its links stay dark
    regardless of scroll state once it's open. */
 #navbar.open .nav-links a { color: var(--navy); }
@@ -1357,7 +1361,7 @@ footer {
 /* Back to top */
 #back-top {
   position: fixed;
-  bottom: 26px; right: 26px;
+  bottom: 96px; right: 26px;
   width: 46px; height: 46px;
   border-radius: 50%;
   background: var(--navy);
@@ -1549,6 +1553,7 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 
 @media (max-width: 720px) {
   .nav-item { flex-direction: column; align-items: flex-start; width: 100%; }
+  .nav-item.has-dropdown > a { width: 100%; justify-content: space-between; }
   .dropdown-menu {
     position: static;
     opacity: 1 !important;
@@ -1557,9 +1562,17 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
     transform: none !important;
     box-shadow: none;
     border: none;
+    padding: 0 0 0 14px;
+    margin-top: 0;
+    background: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+  }
+  .nav-item.has-dropdown.expanded .dropdown-menu {
+    max-height: 400px;
     padding: 4px 0 4px 14px;
     margin-top: 8px;
-    background: transparent;
   }
 }
 

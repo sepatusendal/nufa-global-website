@@ -78,7 +78,18 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.addEventListener('click', function () {
       navbar.classList.toggle('open');
     });
+    var dropdownParentLinks = [];
+    document.querySelectorAll('.nav-item.has-dropdown > a').forEach(function (parentLink) {
+      dropdownParentLinks.push(parentLink);
+      parentLink.addEventListener('click', function (e) {
+        if (window.innerWidth <= 720) {
+          e.preventDefault();
+          parentLink.parentElement.classList.toggle('expanded');
+        }
+      });
+    });
     document.querySelectorAll('.nav-links a').forEach(function (link) {
+      if (dropdownParentLinks.indexOf(link) !== -1) return;
       link.addEventListener('click', function () { navbar.classList.remove('open'); });
     });
   }
