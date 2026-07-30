@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "english-camp-batch-berikutnya",
+    "date": "Contoh Tanggal",
+    "title": "English Camp Batch Berikutnya",
+    "location": "Lokasi Menyusul",
+    "duration": "3 Hari",
+    "excerpt": "Pendaftaran dibuka untuk sekolah mitra dan peserta umum.",
+    "phA": "#363F72",
+    "phB": "#4B60AC",
+    "emoji": "📅",
+    "image": "",
+    "ctaLabel": "Daftar sekarang →",
+    "ctaUrl": ""
+  },
+  {
+    "slug": "webinar-teacher-development",
+    "date": "Contoh Tanggal",
+    "title": "Webinar Teacher Development",
+    "location": "Online",
+    "duration": "2 Jam",
+    "excerpt": "Sesi berbagi praktik classroom management bahasa Inggris untuk guru.",
+    "phA": "#D8433F",
+    "phB": "#E8A33D",
+    "emoji": "📅",
+    "image": "",
+    "ctaLabel": "Daftar sekarang →",
+    "ctaUrl": ""
+  },
+  {
+    "slug": "info-session-immersion-program",
+    "date": "Contoh Tanggal",
+    "title": "Info Session Immersion Program",
+    "location": "Jakarta",
+    "duration": "1 Hari",
+    "excerpt": "Sesi tanya jawab bersama orang tua dan sekolah tentang program immersion.",
+    "phA": "#4B60AC",
+    "phB": "#F15C5D",
+    "emoji": "📅",
+    "image": "",
+    "ctaLabel": "Daftar sekarang →",
+    "ctaUrl": ""
+  }
+]
