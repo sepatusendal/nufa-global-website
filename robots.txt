@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /kelola-hj5o1d/
+Disallow: /assets/data/
+
+Sitemap: https://www.nufaglobaledu.com/sitemap.xml
