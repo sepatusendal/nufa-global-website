@@ -40,4 +40,21 @@ RewriteRule ^([^.]+)$ $1.html [NC,L]
   <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=3600, must-revalidate"
   </FilesMatch>
+
+  # Security headers: HSTS reinforces the https-only redirect above (tells
+  # browsers to skip straight to https next time, even before the redirect).
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# Compress text-based assets so pages load faster (helps Core Web Vitals /
+# PageSpeed score, a minor Google ranking factor).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Custom 404 so a mistyped/removed URL sends visitors back into the site
+# instead of a bare server error page.
+ErrorDocument 404 /404.html
