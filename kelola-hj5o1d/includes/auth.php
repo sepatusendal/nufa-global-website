@@ -4,7 +4,7 @@ declare(strict_types=1);
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 0,
-        'path' => '/admin/',
+        'path' => '/kelola-hj5o1d/',
         'httponly' => true,
         'samesite' => 'Lax',
         'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $configPath = __DIR__ . '/../config.php';
 if (!file_exists($configPath)) {
     http_response_code(500);
-    die('Konfigurasi admin belum ada. Salin admin/config.sample.php menjadi admin/config.php dan isi username/password hash-nya.');
+    die('Konfigurasi admin belum ada. Salin config.sample.php menjadi config.php di folder ini dan isi username/password hash-nya.');
 }
 $ADMIN_CONFIG = require $configPath;
 

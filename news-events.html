@@ -166,8 +166,14 @@
     d.textContent = str == null ? '' : str;
     return d.innerHTML;
   }
+  function isVideoPath(path) {
+    return /\.(mp4|webm|mov)$/i.test(path);
+  }
   function thumbHtml(item, fallbackEmoji) {
     if (item.image) {
+      if (isVideoPath(item.image)) {
+        return '<div class="thumb-block"><video src="' + escapeHtml(item.image) + '" muted loop autoplay playsinline></video></div>';
+      }
       return '<div class="thumb-block"><img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '"></div>';
     }
     var a = escapeHtml(item.phA || '#4B60AC');

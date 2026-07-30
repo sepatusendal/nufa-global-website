@@ -48,6 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $baseSlug = slugify($slugInput !== '' ? $slugInput : $title);
     $finalSlug = unique_slug($events, $baseSlug, $originalSlug);
 
+    $upload = handle_media_upload('media_file', $finalSlug);
+    if (!empty($upload['error'])) {
+        $errors[] = $upload['error'];
+    } elseif (!empty($upload['path'])) {
+        $image = $upload['path'];
+    }
+
     $values = compact('date', 'title', 'location', 'duration', 'excerpt', 'phA', 'phB', 'emoji', 'image', 'ctaLabel', 'ctaUrl');
     $values['slug'] = $finalSlug;
 
@@ -112,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   <?php endif; ?>
 
-  <form method="post" class="admin-form">
+  <form method="post" class="admin-form" enctype="multipart/form-data">
     <?= csrf_field() ?>
 
     <label for="title">Nama Event *</label>
@@ -151,13 +158,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <p class="admin-hint">Kalau link CTA dikosongkan, tombol cuma tampil sebagai teks (tidak bisa diklik).</p>
 
+    <label for="media_file">Upload Foto/Video (opsional)</label>
+    <?php if (!empty($values['image'])): ?>
+      <p class="admin-hint">Foto/video yang sekarang: <a href="../<?= h($values['image']) ?>" target="_blank"><?= h($values['image']) ?></a> — upload file baru buat ganti.</p>
+    <?php endif; ?>
+    <input type="file" id="media_file" name="media_file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime">
+    <p class="admin-hint">Foto maks 8MB (jpg/png/webp/gif), video maks 60MB (mp4/webm/mov). Kalau upload file, ini dipakai dan mengabaikan kolom URL di bawah.</p>
+
     <div class="admin-form-row">
       <div>
-        <label for="image">URL/Path Foto (opsional)</label>
-        <input type="text" id="image" name="image" value="<?= h($values['image']) ?>" placeholder="assets/gallery/nama-file.jpg">
+        <label for="image">Atau isi URL/Path Foto Manual (opsional)</label>
+        <input type="text" id="image" name="image" value="<?= h($values['image']) ?>" placeholder="assets/gallery/nama-file.jpg atau https://...">
       </div>
       <div>
-        <label for="emoji">Emoji Ikon (kalau tanpa foto)</label>
+        <label for="emoji">Emoji Ikon (kalau tanpa foto/video)</label>
         <input type="text" id="emoji" name="emoji" value="<?= h($values['emoji']) ?>">
       </div>
     </div>
