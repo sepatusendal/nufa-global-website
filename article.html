@@ -171,6 +171,17 @@
     d.textContent = str;
     return d.innerHTML;
   }
+  var ID_MONTHS = {
+    januari: '01', februari: '02', maret: '03', april: '04', mei: '05', juni: '06',
+    juli: '07', agustus: '08', september: '09', oktober: '10', november: '11', desember: '12'
+  };
+  function toIsoDate(idDate) {
+    var m = /^(\d{1,2})\s+([a-zA-Z]+)\s+(\d{4})$/.exec((idDate || '').trim());
+    if (!m) return '';
+    var month = ID_MONTHS[m[2].toLowerCase()];
+    if (!month) return '';
+    return m[3] + '-' + month + '-' + (m[1].length === 1 ? '0' + m[1] : m[1]);
+  }
 
   var slug = qs('slug');
   var thumbEl = document.getElementById('art-thumb');
@@ -213,7 +224,7 @@
         headline: art.title,
         description: desc,
         image: [imageUrl],
-        datePublished: art.date || '',
+        datePublished: toIsoDate(art.date) || undefined,
         author: { '@type': 'Organization', name: 'NUFA Global Education' },
         publisher: {
           '@type': 'Organization',
