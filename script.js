@@ -151,6 +151,24 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* Show the real photo (or video poster frame) on a gallery/highlight card
+     once it's confirmed to load, instead of leaving the gradient placeholder
+     up forever. Video cards keep their play button/badge overlay since they
+     still need a click to actually play in the lightbox. */
+  document.querySelectorAll('.gitem[data-type="photo"], .gitem[data-type="video"]').forEach(function (item) {
+    var src = item.dataset.type === 'video' ? item.dataset.poster : item.dataset.src;
+    var thumb = item.querySelector('.thumb');
+    if (!src || !thumb) return;
+    var img = new Image();
+    img.onload = function () {
+      thumb.style.backgroundImage = "url('" + src + "')";
+      thumb.classList.remove('ph');
+      var icon = thumb.querySelector('.ph-icon');
+      if (icon) icon.remove();
+    };
+    img.src = src;
+  });
+
   /* Gallery filter */
   var gfilters = document.querySelectorAll('.gfilter');
   var gitems = document.querySelectorAll('.gitem');
