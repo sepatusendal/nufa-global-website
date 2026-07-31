@@ -8,13 +8,16 @@
    ============================================ */
 window.SITE_CONFIG = {
   // Full-bleed cinematic background video on the homepage hero.
-  heroVideoUrl: 'assets/video/hero-loop.mp4',
+  // Uses a root-absolute path (leading /) so it resolves correctly from
+  // both the Indonesian pages at the site root and the English pages
+  // under /en/ that share this same config file.
+  heroVideoUrl: '/assets/video/hero-loop.mp4',
   // Still image shown while the hero video is loading.
   // Left blank because assets/hero-poster.jpg was never uploaded — pointing
   // at a missing file makes every homepage load fire a 404. Fill this back
   // in once the poster JPG (see assets/README-ASSETS.md) is in place.
   heroVideoPoster: '',
 
-  // Video opened by the "Tonton Video Profil" button in the hero.
-  companyProfileVideoUrl: 'assets/video/company-profile.mp4',
+  // Video opened by the "Tonton Video Profil" / "Watch Profile Video" button in the hero.
+  companyProfileVideoUrl: '/assets/video/company-profile.mp4',
 };

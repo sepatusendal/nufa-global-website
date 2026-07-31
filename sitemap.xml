@@ -1,20 +1,309 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.nufaglobaledu.com/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/about</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/programs</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-english-course</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-english-camp</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-immersion</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-study-abroad</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-native-speaker</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/program-teacher-training</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/school-partnership</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/global</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/gallery</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/testimonials</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/news-events</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/faq</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/career</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.nufaglobaledu.com/contact</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.nufaglobaledu.com/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/about</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/about"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/about</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/about"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/programs</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/programs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/programs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/programs"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/programs</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/programs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/programs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/programs"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-english-course</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-english-course"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-english-course"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-english-course"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-english-course</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-english-course"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-english-course"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-english-course"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-english-camp</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-english-camp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-english-camp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-english-camp"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-english-camp</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-english-camp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-english-camp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-english-camp"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-immersion</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-immersion"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-immersion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-immersion"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-immersion</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-immersion"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-immersion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-immersion"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-study-abroad</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-study-abroad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-study-abroad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-study-abroad"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-study-abroad</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-study-abroad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-study-abroad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-study-abroad"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-native-speaker</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-native-speaker"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-native-speaker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-native-speaker"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-native-speaker</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-native-speaker"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-native-speaker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-native-speaker"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/program-teacher-training</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-teacher-training"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-teacher-training"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-teacher-training"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/program-teacher-training</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/program-teacher-training"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-teacher-training"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-teacher-training"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/school-partnership</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/school-partnership"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/school-partnership"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/school-partnership"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/school-partnership</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/school-partnership"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/school-partnership"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/school-partnership"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/global</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/global"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/global"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/global"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/global</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/global"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/global"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/global"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/gallery</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/gallery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/gallery"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/gallery</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/gallery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/gallery"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/testimonials</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/testimonials"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/testimonials</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/testimonials"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/news-events</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/news-events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/news-events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/news-events"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/news-events</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/news-events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/news-events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/news-events"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/faq</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/faq"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/faq</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/faq"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/career</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/career"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/career"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/career"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/career</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/career"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/career"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/career"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/contact</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/contact"/>
+  </url>
+  <url>
+    <loc>https://www.nufaglobaledu.com/en/contact</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.nufaglobaledu.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/contact"/>
+  </url>
 </urlset>

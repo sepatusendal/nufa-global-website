@@ -270,6 +270,25 @@ a:focus-visible, button:focus-visible, .btn:focus-visible {
 }
 .nav-links a:hover::after { transform: scaleX(1); }
 .nav-cta { display: flex; align-items: center; gap: 14px; }
+.lang-switch {
+  display: flex;
+  border: 1px solid rgba(20,26,51,0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+.lang-switch a {
+  padding: 6px 12px;
+  color: var(--ink-soft);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lang-switch a.active {
+  background: var(--navy);
+  color: #fff;
+}
+.lang-switch a:not(.active):hover { background: var(--paper-dim); }
 .nav-cta .btn-primary { padding: 11px 22px; font-size: 14px; }
 .nav-cta .btn-primary {
   background: #25D366;

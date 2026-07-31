@@ -13,15 +13,21 @@ $errors = [];
 $values = $existing ?: [
     'slug' => '',
     'date' => '',
+    'date_en' => '',
     'title' => '',
+    'title_en' => '',
     'location' => '',
+    'location_en' => '',
     'duration' => '',
+    'duration_en' => '',
     'excerpt' => '',
+    'excerpt_en' => '',
     'phA' => '#363F72',
     'phB' => '#4B60AC',
     'emoji' => '📅',
     'image' => '',
     'ctaLabel' => 'Daftar sekarang →',
+    'ctaLabel_en' => 'Register now →',
     'ctaUrl' => '',
 ];
 
@@ -29,15 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
 
     $title = trim((string) ($_POST['title'] ?? ''));
+    $titleEn = trim((string) ($_POST['title_en'] ?? ''));
     $date = trim((string) ($_POST['date'] ?? ''));
+    $dateEn = trim((string) ($_POST['date_en'] ?? ''));
     $location = trim((string) ($_POST['location'] ?? ''));
+    $locationEn = trim((string) ($_POST['location_en'] ?? ''));
     $duration = trim((string) ($_POST['duration'] ?? ''));
+    $durationEn = trim((string) ($_POST['duration_en'] ?? ''));
     $excerpt = trim((string) ($_POST['excerpt'] ?? ''));
+    $excerptEn = trim((string) ($_POST['excerpt_en'] ?? ''));
     $phA = trim((string) ($_POST['phA'] ?? '#363F72'));
     $phB = trim((string) ($_POST['phB'] ?? '#4B60AC'));
     $emoji = trim((string) ($_POST['emoji'] ?? '📅'));
     $image = trim((string) ($_POST['image'] ?? ''));
     $ctaLabel = trim((string) ($_POST['ctaLabel'] ?? 'Daftar sekarang →'));
+    $ctaLabelEn = trim((string) ($_POST['ctaLabel_en'] ?? 'Register now →'));
     $ctaUrl = trim((string) ($_POST['ctaUrl'] ?? ''));
     $slugInput = trim((string) ($_POST['slug'] ?? ''));
 
@@ -56,21 +68,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $values = compact('date', 'title', 'location', 'duration', 'excerpt', 'phA', 'phB', 'emoji', 'image', 'ctaLabel', 'ctaUrl');
+    $values['date_en'] = $dateEn;
+    $values['title_en'] = $titleEn;
+    $values['location_en'] = $locationEn;
+    $values['duration_en'] = $durationEn;
+    $values['excerpt_en'] = $excerptEn;
+    $values['ctaLabel_en'] = $ctaLabelEn;
     $values['slug'] = $finalSlug;
 
     if (!$errors) {
         $newEntry = [
             'slug' => $finalSlug,
             'date' => $date,
+            'date_en' => $dateEn,
             'title' => $title,
+            'title_en' => $titleEn,
             'location' => $location,
+            'location_en' => $locationEn,
             'duration' => $duration,
+            'duration_en' => $durationEn,
             'excerpt' => $excerpt,
+            'excerpt_en' => $excerptEn,
             'phA' => $phA ?: '#363F72',
             'phB' => $phB ?: '#4B60AC',
             'emoji' => $emoji ?: '📅',
             'image' => $image,
             'ctaLabel' => $ctaLabel ?: 'Daftar sekarang →',
+            'ctaLabel_en' => $ctaLabelEn ?: 'Register now →',
             'ctaUrl' => $ctaUrl,
         ];
 
@@ -157,6 +181,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
     <p class="admin-hint">Kalau link CTA dikosongkan, tombol cuma tampil sebagai teks (tidak bisa diklik).</p>
+
+    <h3 style="margin-top:28px;">Versi Bahasa Inggris (opsional)</h3>
+    <p class="admin-hint">Kosongkan kalau belum ada terjemahan — halaman /en/ akan pakai versi Bahasa Indonesia sebagai fallback.</p>
+
+    <label for="title_en">Event Name (EN)</label>
+    <input type="text" id="title_en" name="title_en" value="<?= h($values['title_en'] ?? '') ?>">
+
+    <div class="admin-form-row">
+      <div>
+        <label for="date_en">Date (EN)</label>
+        <input type="text" id="date_en" name="date_en" value="<?= h($values['date_en'] ?? '') ?>" placeholder="February 20, 2026">
+      </div>
+      <div>
+        <label for="location_en">Location (EN)</label>
+        <input type="text" id="location_en" name="location_en" value="<?= h($values['location_en'] ?? '') ?>" placeholder="Jakarta / Online">
+      </div>
+      <div>
+        <label for="duration_en">Duration (EN)</label>
+        <input type="text" id="duration_en" name="duration_en" value="<?= h($values['duration_en'] ?? '') ?>" placeholder="1 Day / 2 Hours">
+      </div>
+    </div>
+
+    <label for="excerpt_en">Short Description (EN)</label>
+    <textarea id="excerpt_en" name="excerpt_en" rows="2"><?= h($values['excerpt_en'] ?? '') ?></textarea>
+
+    <label for="ctaLabel_en">CTA Button Text (EN)</label>
+    <input type="text" id="ctaLabel_en" name="ctaLabel_en" value="<?= h($values['ctaLabel_en'] ?? 'Register now →') ?>">
 
     <label for="media_file">Upload Foto/Video (opsional)</label>
     <?php if (!empty($values['image'])): ?>
