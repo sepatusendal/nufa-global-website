@@ -2127,21 +2127,22 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 128px;
-  min-width: 220px;
-  padding: 16px 30px;
+  height: 84px;
+  min-width: 168px;
+  padding: 8px 24px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 8px 20px -10px rgba(0,0,0,0.35);
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  transition: box-shadow 0.25s ease;
 }
 .trusted-logo-card.on-dark {
   background: var(--navy-soft);
 }
 .trusted-logo-card img {
-  max-height: 88px;
-  max-width: 220px;
+  max-height: 68px;
+  max-width: 190px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -2149,14 +2150,15 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 }
 .trusted-logo-card:hover,
 .trusted-logo-card:focus-visible {
-  transform: translateY(-6px) scale(1.06);
+  z-index: 2;
   box-shadow: 0 18px 34px -12px rgba(0,0,0,0.45);
 }
-.trusted-logo-card:hover img {
-  transform: scale(1.05);
+.trusted-logo-card:hover img,
+.trusted-logo-card:focus-visible img {
+  transform: scale(1.12);
 }
-.trusted-logo-card:active {
-  transform: translateY(-2px) scale(0.97);
+.trusted-logo-card:active img {
+  transform: scale(1.02);
   transition-duration: 0.1s;
 }
 @keyframes trustedByScroll {
