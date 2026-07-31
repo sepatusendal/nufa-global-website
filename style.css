@@ -1725,7 +1725,7 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 .testi-card:hover .testi-avatar { transform: scale(1.12) rotate(-6deg); }
 .testi-avatar { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .testi-card blockquote { font-size: 14.5px; color: var(--ink); line-height: 1.65; }
-.testi-who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.testi-who { display: flex; align-items: center; gap: 12px; margin-top: auto; min-height: 74px; }
 .testi-avatar {
   width: 42px; height: 42px; border-radius: 50%;
   background: linear-gradient(135deg, var(--indigo), var(--coral));
