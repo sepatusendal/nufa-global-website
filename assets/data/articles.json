@@ -3,9 +3,13 @@
     "slug": "kemitraan-baru-sekolah-jakarta",
     "type": "news",
     "date": "12 Januari 2026",
+    "date_en": "January 12, 2026",
     "category": "Kemitraan",
+    "category_en": "Partnership",
     "title": "NUFA Global Jalin Kemitraan Baru dengan Sekolah di Jakarta",
+    "title_en": "NUFA Global Forges New Partnership With a Jakarta School",
     "excerpt": "Ringkasan singkat kerja sama dan program yang akan berjalan di sekolah mitra.",
+    "excerpt_en": "A short summary of the partnership and the programs launching at the partner school.",
     "phA": "#4B60AC",
     "phB": "#8A9BE0",
     "emoji": "📰",
@@ -15,15 +19,25 @@
       "Kerja sama ini mencakup program English Course reguler di lingkungan sekolah, pelatihan guru bahasa Inggris, serta jalur konsultasi untuk siswa yang berminat mengikuti program Study Abroad maupun Immersion ke luar negeri.",
       "\"Kami ingin memastikan setiap sekolah mitra punya ekosistem belajar bahasa Inggris yang terintegrasi, mulai dari kelas reguler sampai pengalaman internasional langsung,\" ujar tim NUFA Global dalam sesi penandatanganan kerja sama.",
       "Program ini akan mulai berjalan pada semester berikutnya, dengan pendaftaran gelombang pertama dibuka untuk siswa kelas X dan XI. Sekolah lain yang tertarik menjajaki kemitraan serupa dapat menghubungi tim NUFA Global melalui halaman kontak."
+    ],
+    "content_en": [
+      "NUFA Global Education has officially entered a strategic partnership with a secondary school in Jakarta to expand access to English proficiency programs and international study preparation for its students.",
+      "The partnership includes a regular English Course program on campus, English teacher training, and a consultation track for students interested in Study Abroad or Immersion programs overseas.",
+      "\"We want to make sure every partner school has an integrated English-learning ecosystem, from regular classes all the way to direct international experience,\" said the NUFA Global team during the partnership signing session.",
+      "The program will begin next semester, with the first intake open to grade X and XI students. Other schools interested in exploring a similar partnership can reach the NUFA Global team through the contact page."
     ]
   },
   {
     "slug": "tips-persiapan-ielts-study-abroad",
     "type": "news",
     "date": "28 Januari 2026",
+    "date_en": "January 28, 2026",
     "category": "Insight",
+    "category_en": "Insight",
     "title": "Tips Persiapan IELTS untuk Siswa yang Ingin Study Abroad",
+    "title_en": "IELTS Prep Tips for Students Planning to Study Abroad",
     "excerpt": "Panduan singkat strategi belajar sebelum mengikuti tes IELTS/PTE.",
+    "excerpt_en": "A short guide to study strategies before sitting the IELTS/PTE test.",
     "phA": "#F15C5D",
     "phB": "#FF9E7C",
     "emoji": "📰",
@@ -34,15 +48,26 @@
       "Kedua, latihan speaking dengan native speaker atau pembimbing berpengalaman jauh lebih efektif dibanding latihan sendiri, karena feedback langsung soal pelafalan, kelancaran, dan struktur jawaban sangat menentukan skor akhir.",
       "Ketiga, buat jadwal latihan konsisten 6-8 minggu sebelum tes, dengan simulasi tes penuh minimal dua kali agar terbiasa dengan tekanan waktu saat ujian sesungguhnya.",
       "Program Study Abroad NUFA Global menyediakan pendampingan persiapan tes ini sebagai bagian dari layanan konsultasi sebelum keberangkatan."
+    ],
+    "content_en": [
+      "For students planning further study abroad, a strong IELTS or PTE score is often a hard admission requirement. Here are a few preparation strategies that have proven effective from our experience supporting NUFA Global's Study Abroad students.",
+      "First, get familiar with the test format early — listening, reading, writing, and speaking each follow different question patterns and need targeted practice, not just building general vocabulary.",
+      "Second, speaking practice with a native speaker or an experienced coach is far more effective than practicing alone, since direct feedback on pronunciation, fluency, and answer structure matters a lot for the final score.",
+      "Third, build a consistent practice schedule 6-8 weeks before the test, with at least two full mock tests so you get used to the time pressure of the real exam.",
+      "NUFA Global's Study Abroad program provides test-prep support as part of its pre-departure consultation service."
     ]
   },
   {
     "slug": "cerita-immersion-turki",
     "type": "news",
     "date": "5 Februari 2026",
+    "date_en": "February 5, 2026",
     "category": "Cerita Siswa",
+    "category_en": "Student Story",
     "title": "Cerita di Balik Program Immersion ke Turki",
+    "title_en": "The Story Behind the Immersion Program to Turkey",
     "excerpt": "Pengalaman siswa dan guru pendamping selama program immersion berlangsung.",
+    "excerpt_en": "The experience of students and their chaperone teacher during the immersion program.",
     "phA": "#E8A33D",
     "phB": "#F1C878",
     "emoji": "📰",
@@ -52,6 +77,12 @@
       "\"Awalnya gugup karena harus beradaptasi dengan budaya baru, tapi justru dari situ kemampuan bahasa Inggris saya berkembang jauh lebih cepat dibanding belajar di kelas biasa,\" ujar salah satu siswa peserta program.",
       "Guru pendamping juga mencatat peningkatan signifikan pada kepercayaan diri siswa dalam berbicara bahasa Inggris, terutama karena mereka dipaksa menggunakan bahasa Inggris secara aktif dalam kehidupan sehari-hari, bukan hanya di kelas.",
       "Selain kelas bahasa, program ini juga mencakup kunjungan budaya dan sesi kolaborasi dengan siswa lokal, memberikan pengalaman lintas budaya yang lebih menyeluruh dibanding program bahasa konvensional."
+    ],
+    "content_en": [
+      "The Immersion Program to Turkey became one of the most memorable experiences for this year's group of NUFA Global students. Throughout the program, students lived with local host families and attended English classes in an international setting.",
+      "\"I was nervous at first about adapting to a new culture, but that's exactly what made my English improve so much faster than learning in a regular classroom,\" said one of the participating students.",
+      "The chaperone teacher also noted a significant boost in students' confidence speaking English, largely because they were pushed to actively use English in everyday life, not just in class.",
+      "Beyond language classes, the program also included cultural visits and collaboration sessions with local students, offering a more well-rounded cross-cultural experience than a conventional language program."
     ]
   }
 ]

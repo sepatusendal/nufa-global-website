@@ -13,31 +13,42 @@ $errors = [];
 $values = $existing ?: [
     'slug' => '',
     'date' => '',
+    'date_en' => '',
     'category' => '',
+    'category_en' => '',
     'title' => '',
+    'title_en' => '',
     'excerpt' => '',
+    'excerpt_en' => '',
     'phA' => '#4B60AC',
     'phB' => '#8A9BE0',
     'emoji' => '📰',
     'image' => '',
     'content' => [],
+    'content_en' => [],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
 
     $title = trim((string) ($_POST['title'] ?? ''));
+    $titleEn = trim((string) ($_POST['title_en'] ?? ''));
     $date = trim((string) ($_POST['date'] ?? ''));
+    $dateEn = trim((string) ($_POST['date_en'] ?? ''));
     $category = trim((string) ($_POST['category'] ?? ''));
+    $categoryEn = trim((string) ($_POST['category_en'] ?? ''));
     $excerpt = trim((string) ($_POST['excerpt'] ?? ''));
+    $excerptEn = trim((string) ($_POST['excerpt_en'] ?? ''));
     $phA = trim((string) ($_POST['phA'] ?? '#4B60AC'));
     $phB = trim((string) ($_POST['phB'] ?? '#8A9BE0'));
     $emoji = trim((string) ($_POST['emoji'] ?? '📰'));
     $image = trim((string) ($_POST['image'] ?? ''));
     $contentRaw = (string) ($_POST['content'] ?? '');
+    $contentEnRaw = (string) ($_POST['content_en'] ?? '');
     $slugInput = trim((string) ($_POST['slug'] ?? ''));
 
     $content = array_values(array_filter(array_map('trim', preg_split('/\n\s*\n/', $contentRaw)), fn($p) => $p !== ''));
+    $contentEn = array_values(array_filter(array_map('trim', preg_split('/\n\s*\n/', $contentEnRaw)), fn($p) => $p !== ''));
 
     if ($title === '') $errors[] = 'Judul wajib diisi.';
     if ($excerpt === '') $errors[] = 'Ringkasan wajib diisi.';
@@ -55,6 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $values = compact('date', 'category', 'title', 'excerpt', 'phA', 'phB', 'emoji', 'image', 'content');
+    $values['date_en'] = $dateEn;
+    $values['category_en'] = $categoryEn;
+    $values['title_en'] = $titleEn;
+    $values['excerpt_en'] = $excerptEn;
+    $values['content_en'] = $contentEn;
     $values['slug'] = $finalSlug;
 
     if (!$errors) {
@@ -62,14 +78,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'slug' => $finalSlug,
             'type' => 'news',
             'date' => $date,
+            'date_en' => $dateEn,
             'category' => $category,
+            'category_en' => $categoryEn,
             'title' => $title,
+            'title_en' => $titleEn,
             'excerpt' => $excerpt,
+            'excerpt_en' => $excerptEn,
             'phA' => $phA ?: '#4B60AC',
             'phB' => $phB ?: '#8A9BE0',
             'emoji' => $emoji ?: '📰',
             'image' => $image,
             'content' => $content,
+            'content_en' => $contentEn,
         ];
 
         if ($isEdit) {
@@ -143,6 +164,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="content">Isi Artikel Lengkap *</label>
     <p class="admin-hint">Pisahkan tiap paragraf dengan baris kosong (Enter dua kali).</p>
     <textarea id="content" name="content" rows="10" required><?= h(implode("\n\n", $values['content'])) ?></textarea>
+
+    <h3 style="margin-top:28px;">Versi Bahasa Inggris (opsional)</h3>
+    <p class="admin-hint">Kosongkan kalau belum ada terjemahan — halaman /en/ akan pakai versi Bahasa Indonesia sebagai fallback.</p>
+
+    <label for="title_en">Article Title (EN)</label>
+    <input type="text" id="title_en" name="title_en" value="<?= h($values['title_en'] ?? '') ?>">
+
+    <div class="admin-form-row">
+      <div>
+        <label for="date_en">Date (EN)</label>
+        <input type="text" id="date_en" name="date_en" value="<?= h($values['date_en'] ?? '') ?>" placeholder="January 12, 2026">
+      </div>
+      <div>
+        <label for="category_en">Category (EN)</label>
+        <input type="text" id="category_en" name="category_en" value="<?= h($values['category_en'] ?? '') ?>" placeholder="Partnership / Insight / Student Story">
+      </div>
+    </div>
+
+    <label for="excerpt_en">Short Excerpt (EN)</label>
+    <textarea id="excerpt_en" name="excerpt_en" rows="2"><?= h($values['excerpt_en'] ?? '') ?></textarea>
+
+    <label for="content_en">Full Article Content (EN)</label>
+    <p class="admin-hint">Separate each paragraph with a blank line (press Enter twice).</p>
+    <textarea id="content_en" name="content_en" rows="10"><?= h(implode("\n\n", $values['content_en'] ?? [])) ?></textarea>
 
     <label for="media_file">Upload Foto/Video (opsional)</label>
     <?php if (!empty($values['image'])): ?>
