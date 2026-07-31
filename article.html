@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">Berita — NUFA Global Education</title>
-<meta name="description" content="Berita dan insight NUFA Global Education.">
+<meta name="description" id="meta-description" content="Berita dan insight NUFA Global Education — English Camp, webinar guru, dan info session immersion.">
+<link rel="canonical" id="canonical-link" href="https://www.nufaglobaledu.com/news-events">
+<meta property="og:type" content="article">
+<meta property="og:title" id="og-title" content="Berita — NUFA Global Education">
+<meta property="og:description" id="og-description" content="Berita dan insight NUFA Global Education — English Camp, webinar guru, dan info session immersion.">
+<meta property="og:url" id="og-url" content="https://www.nufaglobaledu.com/news-events">
+<meta property="og:image" id="og-image" content="https://www.nufaglobaledu.com/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" id="twitter-title" content="Berita — NUFA Global Education">
+<meta name="twitter:description" id="twitter-description" content="Berita dan insight NUFA Global Education — English Camp, webinar guru, dan info session immersion.">
 
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,7 +188,42 @@
         return;
       }
 
-      document.title = art.title + ' — NUFA Global Education';
+      var pageTitle = art.title + ' — NUFA Global Education';
+      var desc = art.excerpt || art.title;
+      var canonicalUrl = 'https://www.nufaglobaledu.com/article?slug=' + encodeURIComponent(art.slug);
+      var imageUrl = art.image
+        ? new URL(art.image, window.location.href).href
+        : 'https://www.nufaglobaledu.com/assets/logo.png';
+
+      document.title = pageTitle;
+      document.getElementById('meta-description').setAttribute('content', desc);
+      document.getElementById('canonical-link').setAttribute('href', canonicalUrl);
+      document.getElementById('og-title').setAttribute('content', pageTitle);
+      document.getElementById('og-description').setAttribute('content', desc);
+      document.getElementById('og-url').setAttribute('content', canonicalUrl);
+      document.getElementById('og-image').setAttribute('content', imageUrl);
+      document.getElementById('twitter-title').setAttribute('content', pageTitle);
+      document.getElementById('twitter-description').setAttribute('content', desc);
+
+      var ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'NewsArticle',
+        headline: art.title,
+        description: desc,
+        image: [imageUrl],
+        datePublished: art.date || '',
+        author: { '@type': 'Organization', name: 'NUFA Global Education' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'NUFA Global Education',
+          logo: { '@type': 'ImageObject', url: 'https://www.nufaglobaledu.com/assets/logo.png' }
+        },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl }
+      });
+      document.head.appendChild(ld);
+
       document.getElementById('bc-title').textContent = art.title;
       document.getElementById('art-category').textContent = art.category || 'Berita';
       document.getElementById('art-title').textContent = art.title;

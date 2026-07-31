@@ -3,3 +3,7 @@ Options -Indexes
 <FilesMatch "^config\.(php|sample\.php)$">
   Require all denied
 </FilesMatch>
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
