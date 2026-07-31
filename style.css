@@ -2092,3 +2092,77 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
   from { opacity: 0; transform: scale(0.92) translateY(10px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
+
+/* ============ TRUSTED-BY LOGO MARQUEE ============ */
+.trusted-by {
+  background: var(--navy);
+  padding: 44px 0 50px;
+  overflow: hidden;
+}
+.trusted-by .section-head {
+  margin-bottom: 28px;
+}
+.trusted-by .eyebrow { color: var(--gold, #E8B84B); }
+.trusted-by h2 {
+  color: #fff;
+  margin: 0 auto;
+}
+.trusted-by-track-wrap {
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.trusted-by-track {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: max-content;
+  animation: trustedByScroll 32s linear infinite;
+}
+.trusted-by-track-wrap:hover .trusted-by-track {
+  animation-play-state: paused;
+}
+.trusted-logo-card {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 128px;
+  min-width: 220px;
+  padding: 16px 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px -10px rgba(0,0,0,0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.trusted-logo-card.on-dark {
+  background: var(--navy-soft);
+}
+.trusted-logo-card img {
+  max-height: 88px;
+  max-width: 220px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+.trusted-logo-card:hover,
+.trusted-logo-card:focus-visible {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 18px 34px -12px rgba(0,0,0,0.45);
+}
+.trusted-logo-card:hover img {
+  transform: scale(1.05);
+}
+.trusted-logo-card:active {
+  transform: translateY(-2px) scale(0.97);
+  transition-duration: 0.1s;
+}
+@keyframes trustedByScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trusted-by-track { animation: none; }
+}
