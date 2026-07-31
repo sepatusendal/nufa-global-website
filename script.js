@@ -1,6 +1,8 @@
 // NUFA GLOBAL EDUCATION — script.js
 document.addEventListener('DOMContentLoaded', function () {
 
+  var IS_EN = document.documentElement.lang === 'en';
+
   /* Apply assets/site-config.js overrides (lets you swap hero media via URL,
      without touching any HTML) before wiring up the fallback/lightbox logic below. */
   var CONFIG = window.SITE_CONFIG || {};
@@ -207,7 +209,8 @@ document.addEventListener('DOMContentLoaded', function () {
         vid.style.width = '100%';
         vid.style.height = '100%';
         vid.addEventListener('error', function () {
-          lbMedia.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:14px;text-align:center;padding:20px;">Video belum tersedia.<br>Tambahkan file di ' + src + '</div>';
+          var msg = IS_EN ? 'Video not available yet.<br>Add the file at ' : 'Video belum tersedia.<br>Tambahkan file di ';
+          lbMedia.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:14px;text-align:center;padding:20px;">' + msg + src + '</div>';
         });
         lbMedia.appendChild(vid);
       } else {
@@ -215,7 +218,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var img = new Image();
         img.onerror = function () {
           lbMedia.style.backgroundImage = 'none';
-          lbMedia.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:14px;text-align:center;padding:20px;">Foto belum tersedia.<br>Tambahkan file di ' + src + '</div>';
+          var msg = IS_EN ? 'Photo not available yet.<br>Add the file at ' : 'Foto belum tersedia.<br>Tambahkan file di ';
+          lbMedia.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:14px;text-align:center;padding:20px;">' + msg + src + '</div>';
         };
         img.src = src;
       }
@@ -265,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var submitBtn = form.querySelector('button[type="submit"]');
       var originalBtnText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Mengirim...';
+      submitBtn.textContent = IS_EN ? 'Sending...' : 'Mengirim...';
 
       var data = new FormData();
       data.append(GFORM_ENTRIES.name, name);
@@ -291,14 +295,21 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = originalBtnText;
-          var subject = encodeURIComponent('Konsultasi Program — ' + (school || name));
+          var subject = encodeURIComponent((IS_EN ? 'Program Consultation — ' : 'Konsultasi Program — ') + (school || name));
           var body = encodeURIComponent(
-            'Nama: ' + name + '\n' +
-            'Sekolah/Institusi: ' + school + '\n' +
-            'Email: ' + email + '\n' +
-            'No. HP/WA: ' + phone + '\n' +
-            'Program yang diminati: ' + interest + '\n\n' +
-            'Pesan:\n' + message
+            IS_EN
+              ? 'Name: ' + name + '\n' +
+                'School/Institution: ' + school + '\n' +
+                'Email: ' + email + '\n' +
+                'Phone/WA: ' + phone + '\n' +
+                'Program of interest: ' + interest + '\n\n' +
+                'Message:\n' + message
+              : 'Nama: ' + name + '\n' +
+                'Sekolah/Institusi: ' + school + '\n' +
+                'Email: ' + email + '\n' +
+                'No. HP/WA: ' + phone + '\n' +
+                'Program yang diminati: ' + interest + '\n\n' +
+                'Pesan:\n' + message
           );
           window.location.href = 'mailto:info@nufaglobaledu.com?subject=' + subject + '&body=' + body;
         });
