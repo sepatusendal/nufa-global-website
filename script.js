@@ -3,6 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var IS_EN = document.documentElement.lang === 'en';
 
+  /* Program highlight rail — horizontal scroll-snap, prev/next buttons scroll by one card width. */
+  var phiGrid = document.querySelector('.phi-grid');
+  if (phiGrid) {
+    var phiPrev = document.querySelector('.phi-prev');
+    var phiNext = document.querySelector('.phi-next');
+    var scrollByCard = function (dir) {
+      var card = phiGrid.querySelector('.phi-card');
+      var step = card ? card.getBoundingClientRect().width + 20 : 320;
+      phiGrid.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+    if (phiPrev) phiPrev.addEventListener('click', function () { scrollByCard(-1); });
+    if (phiNext) phiNext.addEventListener('click', function () { scrollByCard(1); });
+  }
+
   /* Apply assets/site-config.js overrides (lets you swap hero media via URL,
      without touching any HTML) before wiring up the fallback/lightbox logic below. */
   var CONFIG = window.SITE_CONFIG || {};
