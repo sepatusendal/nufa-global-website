@@ -144,6 +144,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-native-speaker"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-native-speaker"/>
   </url>
+  <!-- Teacher Training for English — program not live yet, excluded from sitemap.
+       Uncomment both <url> blocks below once the program launches.
   <url>
     <loc>https://www.nufaglobaledu.com/program-teacher-training</loc>
     <lastmod>2026-07-30</lastmod>
@@ -162,6 +164,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nufaglobaledu.com/en/program-teacher-training"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nufaglobaledu.com/program-teacher-training"/>
   </url>
+  -->
   <url>
     <loc>https://www.nufaglobaledu.com/school-partnership</loc>
     <lastmod>2026-07-30</lastmod>

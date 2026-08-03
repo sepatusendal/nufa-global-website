@@ -2187,3 +2187,7 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 @media (prefers-reduced-motion: reduce) {
   .trusted-by-track { animation: none; }
 }
+
+/* Teacher Training for English — program not live yet.
+   Toggle back on by deleting this rule (all markup stays intact). */
+.tt-hidden { display: none !important; }
