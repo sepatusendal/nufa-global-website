@@ -1,5 +1,5 @@
 # Deny all direct web access — memo files here are only served through
-# onboarding-14a60b/download.php after an employee login check.
+# nge-employee-ob/download.php after an employee login check.
 <IfModule mod_authz_core.c>
     Require all denied
 </IfModule>

@@ -41,7 +41,7 @@ unset($_SESSION['flash']);
       <h2>Akun Karyawan — Onboarding Portal (<?= count($employees) ?>)</h2>
       <a href="employee-form.php" class="btn-primary">+ Tambah Karyawan</a>
     </div>
-    <p class="admin-hint">Akun di sini dipakai karyawan untuk login ke portal onboarding (<code>/onboarding-14a60b/</code>). Ini terpisah dari login admin ini.</p>
+    <p class="admin-hint">Akun di sini dipakai karyawan untuk login ke portal onboarding (<code>/nge-employee-ob/</code>). Ini terpisah dari login admin ini.</p>
     <?php if (!$employees): ?>
       <p class="admin-empty">Belum ada akun karyawan.</p>
     <?php else: ?>
