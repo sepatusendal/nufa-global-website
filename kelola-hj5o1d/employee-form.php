@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/auth.php';
@@ -77,50 +78,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title><?= $isEdit ? 'Edit' : 'Tambah' ?> Karyawan — Admin NUFA Global</title>
-<link rel="icon" href="../assets/logo.png" type="image/png">
-<link rel="stylesheet" href="assets/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title><?= $isEdit ? 'Edit' : 'Tambah' ?> Karyawan — Admin NUFA Global</title>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/admin.css">
 </head>
+
 <body>
-<header class="admin-header">
-  <div class="admin-header-inner">
-    <img src="../assets/logo.png" alt="NUFA Global Education" class="admin-logo">
-    <span class="admin-title"><?= $isEdit ? 'Edit Karyawan' : 'Tambah Karyawan' ?></span>
-    <div class="admin-header-right">
-      <a href="employees.php">← Kembali</a>
-    </div>
-  </div>
-</header>
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <img src="../assets/logo.png" alt="NUFA Global Education" class="admin-logo">
+            <span class="admin-title"><?= $isEdit ? 'Edit Karyawan' : 'Tambah Karyawan' ?></span>
+            <div class="admin-header-right">
+                <a href="employees.php">← Kembali</a>
+            </div>
+        </div>
+    </header>
 
-<main class="admin-main admin-main-narrow">
-  <?php if ($errors): ?>
-    <div class="alert alert-error">
-      <ul><?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?></ul>
-    </div>
-  <?php endif; ?>
+    <main class="admin-main admin-main-narrow">
+        <?php if ($errors): ?>
+            <div class="alert alert-error">
+                <ul><?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?></ul>
+            </div>
+        <?php endif; ?>
 
-  <form method="post" class="admin-form">
-    <?= csrf_field() ?>
+        <form method="post" class="admin-form">
+            <?= csrf_field() ?>
 
-    <label for="name">Nama Lengkap *</label>
-    <input type="text" id="name" name="name" value="<?= h($values['name']) ?>" required>
+            <label for="name">Nama Lengkap *</label>
+            <input type="text" id="name" name="name" value="<?= h($values['name']) ?>" required>
 
-    <label for="username">Username Login *</label>
-    <input type="text" id="username" name="username" value="<?= h($values['username']) ?>" placeholder="rian@nufaglobaledu.com" required <?= $isEdit ? 'readonly' : '' ?>>
-    <p class="admin-hint">Dipakai karyawan untuk login ke portal onboarding — biasanya email kerja karyawan. Huruf kecil, tanpa spasi.</p>
+            <label for="username">Username Login *</label>
+            <input type="text" id="username" name="username" value="<?= h($values['username']) ?>" placeholder="wira@nufaglobaledu.com" required <?= $isEdit ? 'readonly' : '' ?>>
+            <p class="admin-hint">Dipakai karyawan untuk login ke portal onboarding — biasanya email kerja karyawan. Huruf kecil, tanpa spasi.</p>
 
-    <label for="email">Email Kerja</label>
-    <input type="email" id="email" name="email" value="<?= h($values['email']) ?>" placeholder="rian@nufaglobaledu.com">
+            <label for="email">Email Kerja</label>
+            <input type="email" id="email" name="email" value="<?= h($values['email']) ?>" placeholder="wira@nufaglobaledu.com">
 
-    <label for="password">Password <?= $isEdit ? '(kosongkan kalau tidak ingin ganti)' : '*' ?></label>
-    <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Minimal 8 karakter">
+            <label for="password">Password <?= $isEdit ? '(kosongkan kalau tidak ingin ganti)' : '*' ?></label>
+            <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Minimal 8 karakter">
 
-    <button type="submit" class="btn-primary"><?= $isEdit ? 'Simpan Perubahan' : 'Buat Akun' ?></button>
-  </form>
-</main>
+            <button type="submit" class="btn-primary"><?= $isEdit ? 'Simpan Perubahan' : 'Buat Akun' ?></button>
+        </form>
+    </main>
 </body>
+
 </html>
