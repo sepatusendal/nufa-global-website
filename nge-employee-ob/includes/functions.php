@@ -29,6 +29,20 @@ function read_memos(): array
     return read_json_file(data_file('memos.json'));
 }
 
+function memo_visible_to(array $memo, string $username): bool
+{
+    if (($memo['visibility'] ?? 'all') !== 'specific') {
+        return true;
+    }
+    $username = strtolower($username);
+    foreach ((array) ($memo['employees'] ?? []) as $target) {
+        if (strtolower((string) $target) === $username) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function h(?string $value): string
 {
     return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
