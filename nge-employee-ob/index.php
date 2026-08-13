@@ -10,6 +10,7 @@ $employeeName = $_SESSION['employee_name'] ?? '';
 $employeeFirstName = trim((string) explode(' ', (string) $employeeName)[0]);
 $employeeEmail = $_SESSION['employee_email'] ?? '';
 $emailUser = $employeeEmail !== '' ? $employeeEmail : '[nama]@nufaglobaledu.com';
+$emailPassword = $_SESSION['employee_email_password'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -121,16 +122,60 @@ $emailUser = $employeeEmail !== '' ? $employeeEmail : '[nama]@nufaglobaledu.com'
         <div>
           <span class="ob-vm-tag">Alamat Email Kamu</span>
           <div class="ob-cred-email" id="ob-email-value"><?= h($emailUser) ?></div>
-          <div class="ob-cred-note">Password diberikan terpisah oleh admin/IT — hubungi admin kalau belum dapat.</div>
         </div>
         <button type="button" class="ob-copy-btn" data-copy="<?= h($emailUser) ?>">Copy Email</button>
       </div>
 
+      <?php if ($emailPassword !== ''): ?>
+        <div class="ob-cred-card">
+          <div>
+            <span class="ob-vm-tag">Password Awal (dari Admin)</span>
+            <div class="ob-cred-email" id="ob-pw-value" data-real="<?= h($emailPassword) ?>" data-visible="0">••••••••••</div>
+            <div class="ob-cred-note">Password sementara — WAJIB diganti begitu kamu login pertama kali. Caranya di bawah.</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="ob-copy-btn" id="ob-pw-toggle">Lihat</button>
+            <button type="button" class="ob-copy-btn" data-copy="<?= h($emailPassword) ?>">Copy</button>
+          </div>
+        </div>
+
+        <div class="ob-cred-card" style="background:linear-gradient(135deg, var(--coral), var(--coral-dark));">
+          <div>
+            <span class="ob-vm-tag" style="color:rgba(255,255,255,0.8);">⚠️ Wajib di Hari Pertama</span>
+            <div style="font-family:var(--display); font-weight:800; font-size:16px; color:#fff; margin-top:6px;">Ganti password email di atas sekarang</div>
+            <div class="ob-cred-note" style="color:rgba(255,255,255,0.85);">Login ke Webmail pakai kredensial di atas, lalu ganti sendiri lewat menu Settings → Password. Jangan dipakai lama-lama, itu cuma password sementara dari admin.</div>
+          </div>
+          <a href="https://webmail.nufaglobaledu.com" target="_blank" rel="noopener" class="ob-btn" style="background:#fff; color:var(--coral-dark);">🔒 Buka Webmail &amp; Ganti Password</a>
+        </div>
+
+        <div class="ob-steps" style="margin-bottom:32px;">
+          <div class="ob-step">
+            <div class="ob-step-title">Login ke Webmail pakai kredensial awal</div>
+            <p>Klik tombol "Buka Webmail & Ganti Password" di atas → masuk pakai email &amp; password yang dikasih admin.</p>
+          </div>
+          <div class="ob-step">
+            <div class="ob-step-title">Buka menu Settings → Password</div>
+            <p>Di Roundcube, klik ikon ⚙️ Settings di pojok kanan atas, lalu pilih <strong>Password</strong>.</p>
+          </div>
+          <div class="ob-step">
+            <div class="ob-step-title">Masukkan password lama &amp; password baru</div>
+            <p>Isi password lama (dari admin), lalu password baru 2x, klik <strong>Save</strong>. Pakai password yang cuma kamu yang tau.</p>
+          </div>
+          <div class="ob-step">
+            <div class="ob-step-title">Kalau menu Password tidak ada</div>
+            <p>Beberapa akun tidak bisa ganti password sendiri lewat Roundcube — screenshot dan kirim ke admin/IT buat diganti manual lewat cPanel.</p>
+          </div>
+        </div>
+      <?php else: ?>
+        <p class="ob-hint" style="margin-bottom:24px;">Password email awal belum diisi admin di sistem — hubungi admin/IT buat dapetin password awal akun email kamu.</p>
+      <?php endif; ?>
+
+      <h3 class="ob-div-label">Sambungkan ke Gmail App (Opsional)</h3>
       <div class="ob-cta-row">
         <a href="https://mail.google.com/mail/u/0/#settings/accounts" target="_blank" rel="noopener" class="ob-btn ob-btn-primary">📧 Buka Gmail → Tambah Akun</a>
         <a href="https://webmail.nufaglobaledu.com" target="_blank" rel="noopener" class="ob-btn ob-btn-indigo">🌐 Atau Pakai Webmail Langsung</a>
       </div>
-      <p class="ob-hint" style="margin-bottom:32px;">Tombol pertama langsung membuka halaman Gmail "Add another account" — tinggal ikuti step di bawah. Tombol kedua kalau tidak mau install apa-apa, cukup buka email lewat browser tanpa setup.</p>
+      <p class="ob-hint" style="margin-bottom:32px;">Tombol pertama langsung membuka halaman Gmail "Add another account" — tinggal ikuti step di bawah. Tombol kedua kalau tidak mau install apa-apa, cukup buka email lewat browser tanpa setup. Pakai password BARU kamu (bukan yang dari admin) kalau sudah diganti.</p>
 
       <div class="ob-steps">
         <div class="ob-step">
@@ -209,6 +254,23 @@ document.querySelectorAll('.ob-copy-btn').forEach(function (btn) {
     });
   });
 });
+
+var pwToggle = document.getElementById('ob-pw-toggle');
+var pwValue = document.getElementById('ob-pw-value');
+if (pwToggle && pwValue) {
+  pwToggle.addEventListener('click', function () {
+    var visible = pwValue.getAttribute('data-visible') === '1';
+    if (visible) {
+      pwValue.textContent = '••••••••••';
+      pwValue.setAttribute('data-visible', '0');
+      pwToggle.textContent = 'Lihat';
+    } else {
+      pwValue.textContent = pwValue.getAttribute('data-real') || '';
+      pwValue.setAttribute('data-visible', '1');
+      pwToggle.textContent = 'Sembunyikan';
+    }
+  });
+}
 </script>
 </body>
 </html>

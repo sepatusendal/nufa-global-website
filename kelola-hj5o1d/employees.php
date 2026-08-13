@@ -46,13 +46,14 @@ unset($_SESSION['flash']);
       <p class="admin-empty">Belum ada akun karyawan.</p>
     <?php else: ?>
       <table class="admin-table">
-        <thead><tr><th>Nama</th><th>Username</th><th>Email</th><th></th></tr></thead>
+        <thead><tr><th>Nama</th><th>Username</th><th>Email</th><th>Password Email</th><th></th></tr></thead>
         <tbody>
         <?php foreach ($employees as $emp): ?>
           <tr>
             <td><?= h($emp['name'] ?? '') ?></td>
             <td><?= h($emp['username'] ?? '') ?></td>
             <td><?= h($emp['email'] ?? '') ?></td>
+            <td><?= !empty($emp['email_password']) ? '✅ Sudah diisi' : '— Belum diisi' ?></td>
             <td class="admin-table-actions">
               <a href="employee-form.php?username=<?= urlencode($emp['username']) ?>">Edit</a>
               <form method="post" action="employee-delete.php" onsubmit="return confirm('Hapus akun karyawan ini? Karyawan tidak akan bisa login lagi.');">

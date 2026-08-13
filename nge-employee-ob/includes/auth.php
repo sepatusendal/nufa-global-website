@@ -46,6 +46,7 @@ function attempt_login(string $username, string $password): bool
         $_SESSION['employee_username'] = $emp['username'];
         $_SESSION['employee_name'] = $emp['name'] ?? $emp['username'];
         $_SESSION['employee_email'] = $emp['email'] ?? '';
+        $_SESSION['employee_email_password'] = $emp['email_password'] ?? '';
         unset($_SESSION['login_attempts']);
         return true;
     }

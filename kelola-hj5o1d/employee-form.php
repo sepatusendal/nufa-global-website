@@ -15,6 +15,7 @@ $values = $existing ?: [
     'name' => '',
     'username' => '',
     'email' => '',
+    'email_password' => '',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = strtolower(trim((string) ($_POST['username'] ?? '')));
     $email = trim((string) ($_POST['email'] ?? ''));
     $password = (string) ($_POST['password'] ?? '');
+    $emailPassword = (string) ($_POST['email_password'] ?? '');
 
     $originalUsername = $isEdit ? $existing['username'] : null;
 
@@ -43,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Username ini sudah dipakai karyawan lain.';
     }
 
-    $values = compact('name', 'username', 'email');
+    $values = compact('name', 'username', 'email', 'emailPassword');
+    $values['email_password'] = $emailPassword;
 
     if (!$errors) {
         $passwordHash = $isEdit ? $existing['password_hash'] : '';
@@ -51,11 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         }
 
+        $finalEmailPassword = $emailPassword !== '' ? $emailPassword : ($isEdit ? ($existing['email_password'] ?? '') : '');
+
         $newEntry = [
             'name' => $name,
             'username' => $username,
             'email' => $email,
             'password_hash' => $passwordHash,
+            'email_password' => $finalEmailPassword,
             'created_at' => $isEdit ? ($existing['created_at'] ?? date('Y-m-d')) : date('Y-m-d'),
         ];
 
@@ -119,8 +125,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="email">Email Kerja</label>
             <input type="email" id="email" name="email" value="<?= h($values['email']) ?>" placeholder="wira@nufaglobaledu.com">
 
-            <label for="password">Password <?= $isEdit ? '(kosongkan kalau tidak ingin ganti)' : '*' ?></label>
+            <label for="password">Password Login Portal <?= $isEdit ? '(kosongkan kalau tidak ingin ganti)' : '*' ?></label>
             <input type="password" id="password" name="password" autocomplete="new-password" placeholder="Minimal 8 karakter">
+            <p class="admin-hint">Password buat login ke portal onboarding ini (halaman yang lagi kamu isi). Beda dari password email di bawah.</p>
+
+            <label for="email_password">Password Email Kantor Awal <?= $isEdit ? '(kosongkan kalau tidak berubah)' : '' ?></label>
+            <input type="text" id="email_password" name="email_password" value="<?= h($values['email_password'] ?? '') ?>" placeholder="Password akun email cPanel/webmail dia">
+            <p class="admin-hint">Password akun email yang kamu bikin manual di cPanel Email Accounts buat karyawan ini. Ditampilkan ke karyawan di portal onboarding, biar dia bisa login sekali terus langsung diminta ganti sendiri lewat Webmail/Roundcube.</p>
 
             <button type="submit" class="btn-primary"><?= $isEdit ? 'Simpan Perubahan' : 'Buat Akun' ?></button>
         </form>
