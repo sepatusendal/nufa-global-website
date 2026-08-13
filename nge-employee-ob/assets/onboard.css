@@ -502,9 +502,51 @@ code {
   text-align: center;
 }
 
+/* ============================================
+   Mobile — this portal is used on phones as much
+   as desktop, so every section gets a real pass,
+   not just a generic grid collapse.
+   ============================================ */
 @media (max-width: 720px) {
   .ob-vm-grid, .ob-div-grid { grid-template-columns: 1fr; }
   .ob-grow-grid { grid-template-columns: repeat(2, 1fr); }
   .ob-section-num { display: none; }
-  .ob-cred-card { flex-direction: column; align-items: flex-start; }
+  .ob-cred-card { flex-direction: column; align-items: stretch; }
+  .ob-cred-card .ob-copy-btn { align-self: flex-start; }
+
+  .ob-login-card { padding: 32px 22px; }
+  .ob-login-card h1 { font-size: 22px; }
+
+  .ob-topbar-inner { padding: 12px 16px; gap: 10px; }
+  .ob-topbar-label { display: none; }
+  .ob-topbar-right { gap: 10px; }
+  .ob-topbar-right span { display: none; }
+
+  .ob-hero { padding: 36px 16px 56px; }
+  .ob-hero p { font-size: 14.5px; }
+
+  .ob-toc { padding: 0 16px; margin-top: -24px; gap: 8px; }
+  .ob-toc a { padding: 10px 14px; font-size: 11px; flex: 1 1 auto; text-align: center; }
+
+  .ob-main { padding: 56px 16px 24px; }
+  .ob-section { padding-bottom: 56px; }
+  .ob-section-head p { font-size: 14px; }
+
+  .ob-grow-band { padding: 32px 18px; border-radius: 16px; }
+  .ob-grow-grid { gap: 10px; }
+  .ob-grow-card { padding: 16px 10px; }
+
+  .ob-cta-row { flex-direction: column; }
+  .ob-cta-row .ob-btn { width: 100%; }
+
+  .ob-server-row { flex-wrap: wrap; }
+  .ob-server-row code { flex: 1 1 auto; }
+
+  .ob-memo-row { flex-wrap: wrap; }
+  .ob-memo-row .ob-btn { width: 100%; margin-top: 4px; }
+}
+
+@media (max-width: 420px) {
+  .ob-grow-grid { grid-template-columns: 1fr; }
+  .ob-login-card { padding: 28px 18px; }
 }
