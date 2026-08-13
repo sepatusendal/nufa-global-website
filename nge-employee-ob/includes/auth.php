@@ -4,7 +4,7 @@ declare(strict_types=1);
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 0,
-        'path' => '/onboarding-14a60b/',
+        'path' => '/nge-employee-ob/',
         'httponly' => true,
         'samesite' => 'Lax',
         'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
