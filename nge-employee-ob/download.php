@@ -22,6 +22,11 @@ if (!$memo) {
     die('File tidak ditemukan.');
 }
 
+if (!memo_visible_to($memo, (string) ($_SESSION['employee_username'] ?? ''))) {
+    http_response_code(403);
+    die('Kamu tidak punya akses ke file ini.');
+}
+
 $path = MEMO_DIR . '/' . $storedName;
 if (!is_file($path)) {
     http_response_code(404);

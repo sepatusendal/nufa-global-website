@@ -5,6 +5,7 @@ require __DIR__ . '/includes/auth.php';
 require_login();
 
 $memos = read_memos();
+$employees = read_employees();
 $errors = [];
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
@@ -14,6 +15,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $title = trim((string) ($_POST['title'] ?? ''));
     if ($title === '') $errors[] = 'Judul memo wajib diisi.';
+
+    $visibility = ($_POST['visibility'] ?? 'all') === 'specific' ? 'specific' : 'all';
+    $targets = [];
+    if ($visibility === 'specific') {
+        $submitted = $_POST['target_employees'] ?? [];
+        $validUsernames = array_map(fn($e) => strtolower((string) $e['username']), $employees);
+        $targets = array_values(array_intersect(array_map('strtolower', (array) $submitted), $validUsernames));
+        if (!$targets) {
+            $errors[] = 'Pilih minimal 1 karyawan kalau memo ini khusus untuk karyawan tertentu.';
+        }
+    }
 
     $upload = handle_memo_upload('memo_file');
     if (!empty($upload['error'])) {
@@ -28,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'stored_name' => $upload['stored_name'],
             'original_name' => $upload['original_name'],
             'uploaded_at' => date('Y-m-d'),
+            'visibility' => $visibility,
+            'employees' => $targets,
         ];
         write_memos($memos);
         $_SESSION['flash'] = ['type' => 'success', 'message' => 'Memo berhasil diupload.'];
@@ -72,13 +86,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="admin-section-head">
       <h2>Upload Memo Baru</h2>
     </div>
-    <form method="post" class="admin-form" enctype="multipart/form-data">
+    <form method="post" class="admin-form" enctype="multipart/form-data" id="memo-form">
       <?= csrf_field() ?>
       <label for="title">Judul Memo *</label>
       <input type="text" id="title" name="title" placeholder="Contoh: SOP Cuti & Izin 2026" required>
       <label for="memo_file">File Memo *</label>
       <input type="file" id="memo_file" name="memo_file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip" required>
       <p class="admin-hint">Format pdf/doc/docx/xls/xlsx/ppt/pptx/zip, maks 25MB. File TIDAK bisa diakses publik — hanya karyawan yang login ke portal onboarding yang bisa download.</p>
+
+      <label>Siapa yang bisa lihat &amp; download memo ini? *</label>
+      <div class="admin-form-row" style="margin-top:6px;">
+        <label style="font-weight:400; display:flex; align-items:center; gap:6px; margin-top:0;">
+          <input type="radio" name="visibility" value="all" id="vis-all" checked style="width:auto;"> Semua Karyawan
+        </label>
+        <label style="font-weight:400; display:flex; align-items:center; gap:6px; margin-top:0;">
+          <input type="radio" name="visibility" value="specific" id="vis-specific" style="width:auto;"> Karyawan Tertentu
+        </label>
+      </div>
+
+      <div id="target-employees-box" style="display:none; margin-top:10px; border:1px solid var(--a-line); border-radius:8px; padding:12px 14px; max-height:220px; overflow-y:auto;">
+        <?php if (!$employees): ?>
+          <p class="admin-hint" style="margin:0;">Belum ada akun karyawan. Buat dulu di menu <a href="employees.php">Karyawan</a>.</p>
+        <?php else: ?>
+          <?php foreach ($employees as $emp): ?>
+            <label style="font-weight:400; display:flex; align-items:center; gap:8px; margin:6px 0;">
+              <input type="checkbox" name="target_employees[]" value="<?= h($emp['username']) ?>" style="width:auto;">
+              <?= h($emp['name'] ?? '') ?> <span class="admin-hint" style="margin:0;">(<?= h($emp['username']) ?>)</span>
+            </label>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+
       <button type="submit" class="btn-primary">Upload</button>
     </form>
   </section>
@@ -91,13 +129,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p class="admin-empty">Belum ada memo yang diupload.</p>
     <?php else: ?>
       <table class="admin-table">
-        <thead><tr><th>Judul</th><th>Nama File Asli</th><th>Tanggal Upload</th><th></th></tr></thead>
+        <thead><tr><th>Judul</th><th>Nama File Asli</th><th>Tanggal Upload</th><th>Ditujukan Untuk</th><th></th></tr></thead>
         <tbody>
         <?php foreach ($memos as $m): ?>
+          <?php
+            $isSpecific = ($m['visibility'] ?? 'all') === 'specific';
+            $targetNames = [];
+            if ($isSpecific) {
+                foreach ((array) ($m['employees'] ?? []) as $username) {
+                    $emp = find_employee_by_username($employees, (string) $username);
+                    $targetNames[] = $emp['name'] ?? $username;
+                }
+            }
+          ?>
           <tr>
             <td><?= h($m['title'] ?? '') ?></td>
             <td><?= h($m['original_name'] ?? '') ?></td>
             <td><?= h($m['uploaded_at'] ?? '') ?></td>
+            <td><?= $isSpecific ? h(implode(', ', $targetNames) ?: '(tidak ada)') : 'Semua Karyawan' ?></td>
             <td class="admin-table-actions">
               <form method="post" action="memo-delete.php" onsubmit="return confirm('Hapus memo ini? Tidak bisa dibatalkan.');">
                 <?= csrf_field() ?>
@@ -112,5 +161,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
   </section>
 </main>
+<script>
+(function () {
+  var box = document.getElementById('target-employees-box');
+  var radios = document.querySelectorAll('input[name="visibility"]');
+  function sync() {
+    box.style.display = document.getElementById('vis-specific').checked ? 'block' : 'none';
+  }
+  radios.forEach(function (r) { r.addEventListener('change', sync); });
+  sync();
+})();
+</script>
 </body>
 </html>

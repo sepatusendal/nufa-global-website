@@ -4,7 +4,8 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/auth.php';
 require_login();
 
-$memos = read_memos();
+$currentUsername = (string) ($_SESSION['employee_username'] ?? '');
+$memos = array_values(array_filter(read_memos(), fn($m) => memo_visible_to($m, $currentUsername)));
 $employeeName = $_SESSION['employee_name'] ?? '';
 $employeeFirstName = trim((string) explode(' ', (string) $employeeName)[0]);
 $employeeEmail = $_SESSION['employee_email'] ?? '';
