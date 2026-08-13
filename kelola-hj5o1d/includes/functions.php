@@ -56,6 +56,89 @@ function write_events(array $data): bool
     return write_json_file(data_file('events.json'), $data);
 }
 
+function read_employees(): array
+{
+    return read_json_file(data_file('employees.json'));
+}
+
+function write_employees(array $data): bool
+{
+    return write_json_file(data_file('employees.json'), $data);
+}
+
+function find_employee_by_username(array $employees, string $username): ?array
+{
+    foreach ($employees as $e) {
+        if (strtolower((string) $e['username']) === strtolower($username)) {
+            return $e;
+        }
+    }
+    return null;
+}
+
+function read_memos(): array
+{
+    return read_json_file(data_file('memos.json'));
+}
+
+function write_memos(array $data): bool
+{
+    return write_json_file(data_file('memos.json'), $data);
+}
+
+define('MEMO_DIR', dirname(DATA_DIR, 2) . '/memo-storage');
+const MEMO_ALLOWED_EXT = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'zip'];
+const MEMO_MAX_BYTES = 25 * 1024 * 1024;
+
+/**
+ * Stores an uploaded memo file outside the public web-servable tree
+ * (memo-storage/, blocked by .htaccess) under a random filename.
+ * Returns ['stored_name', 'original_name'] on success, ['error' => ...] on failure,
+ * or [] if no file was submitted.
+ */
+function handle_memo_upload(string $fieldName): array
+{
+    if (empty($_FILES[$fieldName]) || $_FILES[$fieldName]['error'] === UPLOAD_ERR_NO_FILE) {
+        return [];
+    }
+
+    $file = $_FILES[$fieldName];
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        return ['error' => 'Upload gagal (kode error: ' . $file['error'] . '). Coba lagi atau pakai file yang lebih kecil.'];
+    }
+
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    if (!in_array($ext, MEMO_ALLOWED_EXT, true)) {
+        return ['error' => 'Format file "' . $ext . '" tidak didukung. Pakai pdf/doc/docx/xls/xlsx/ppt/pptx/zip.'];
+    }
+
+    if ($file['size'] > MEMO_MAX_BYTES) {
+        return ['error' => 'Ukuran file terlalu besar (maks 25MB).'];
+    }
+
+    if (!is_dir(MEMO_DIR)) {
+        mkdir(MEMO_DIR, 0755, true);
+    }
+
+    $storedName = bin2hex(random_bytes(8)) . '.' . $ext;
+    $destPath = MEMO_DIR . '/' . $storedName;
+
+    if (!move_uploaded_file($file['tmp_name'], $destPath)) {
+        return ['error' => 'Gagal menyimpan file yang di-upload ke server.'];
+    }
+
+    return ['stored_name' => $storedName, 'original_name' => $file['name']];
+}
+
+function delete_memo_file(string $storedName): void
+{
+    $path = MEMO_DIR . '/' . basename($storedName);
+    if (is_file($path)) {
+        unlink($path);
+    }
+}
+
 function slugify(string $text): string
 {
     $text = strtolower(trim($text));

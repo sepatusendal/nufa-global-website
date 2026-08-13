@@ -26,6 +26,8 @@ unset($_SESSION['flash']);
     <span class="admin-title">Admin — Berita & Event</span>
     <div class="admin-header-right">
       <span>Halo, <?= h($_SESSION['admin_username'] ?? '') ?></span>
+      <a href="employees.php">Karyawan</a>
+      <a href="memos.php">Memo Internal</a>
       <a href="../news-events.html" target="_blank">Lihat halaman publik ↗</a>
       <a href="logout.php" class="btn-outline">Logout</a>
     </div>
