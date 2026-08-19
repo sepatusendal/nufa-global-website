@@ -1,6 +1,7 @@
 PANDUAN-EDIT-WEBSITE.md
 kelola-hj5o1d/config.php
 ONBOARDING-RIAN-BRIEF.md
+.DS_Store
 
 # Employee accounts (password hashes) and uploaded internal memo files must
 # never be public — this repo is a public GitHub repo.
