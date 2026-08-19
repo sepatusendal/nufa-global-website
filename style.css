@@ -1046,6 +1046,106 @@ a:focus-visible, button:focus-visible, .btn:focus-visible {
   gap: 10px;
 }
 
+/* ============ Gallery — Netflix-style hero + horizontal rows ============ */
+.gallery-hero {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  margin-bottom: 48px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.gallery-hero .thumb {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+.gallery-hero:hover .thumb { transform: scale(1.04); }
+.gallery-hero .hero-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,13,28,0.96) 0%, rgba(10,13,28,0.35) 55%, rgba(10,13,28,0.15) 100%),
+              linear-gradient(90deg, rgba(10,13,28,0.55) 0%, rgba(10,13,28,0) 55%);
+}
+.gallery-hero .hero-body {
+  position: absolute; left: 32px; right: 32px; bottom: 28px;
+  z-index: 2;
+  max-width: 560px;
+}
+.gallery-hero .hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral);
+  background: rgba(241,92,93,0.14);
+  border: 1px solid rgba(241,92,93,0.35);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.gallery-hero h2 { font-size: 30px; color: var(--white); margin-bottom: 10px; line-height: 1.15; }
+.gallery-hero p { font-size: 14px; color: rgba(255,255,255,0.72); margin-bottom: 18px; }
+.gallery-hero .hero-play {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--white); color: var(--navy);
+  padding: 12px 24px;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 14px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+}
+.gallery-hero:hover .hero-play { transform: scale(1.05); background: var(--coral); color: var(--white); }
+.gallery-hero .hero-play .playdot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--navy); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+}
+.gallery-hero:hover .hero-play .playdot { background: var(--white); color: var(--coral); }
+
+.gallery-row { margin-bottom: 36px; }
+.gallery-row.tt-hidden { display: none; }
+.gallery-row-head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 14px;
+}
+.gallery-row-head h3 { font-size: 18px; color: var(--white); }
+.gallery-row-head .count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+.gallery-row-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 2px;
+  padding: 2px 2px 10px;
+  margin: -2px -2px 0;
+  scrollbar-width: none;
+}
+.gallery-row-track::-webkit-scrollbar { display: none; }
+.gallery-row-track .gitem {
+  flex: 0 0 260px;
+  aspect-ratio: 16 / 9;
+  scroll-snap-align: start;
+  margin: 0;
+}
+@media (min-width: 640px) {
+  .gallery-row-track .gitem { flex-basis: 300px; }
+}
+.gallery-row-track .gitem:hover {
+  transform: scale(1.06);
+  z-index: 5;
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 20px 40px -16px rgba(0,0,0,0.6);
+}
+.gallery-row-track .gitem { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease; }
+
 /* Lightbox — fades + scales in rather than snapping open */
 #lightbox {
   position: fixed; inset: 0;
@@ -2220,6 +2320,83 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .trusted-by-track { animation: none; }
+}
+
+/* ============ NUFA GLOBAL "bumper" intro (Netflix-style logo intro) ============ */
+#nufa-bumper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, var(--navy-soft) 0%, var(--navy) 70%);
+  animation: bumperFadeOut 0.7s ease forwards;
+  animation-delay: 2.1s;
+  cursor: pointer;
+}
+#nufa-bumper .bumper-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: bumperZoomIn 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.15s;
+}
+#nufa-bumper .bumper-mark img {
+  height: 64px;
+  width: auto;
+  filter: drop-shadow(0 0 50px rgba(241, 92, 93, 0.65)) drop-shadow(0 0 90px rgba(75, 96, 172, 0.45));
+}
+#nufa-bumper .bumper-ring {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(241, 92, 93, 0.5);
+  opacity: 0;
+  animation: bumperRing 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.15s;
+}
+#nufa-bumper .bumper-skip {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: bumperSkipIn 0.5s ease forwards;
+  animation-delay: 1s;
+}
+@keyframes bumperZoomIn {
+  0% { opacity: 0; transform: scale(0.4); }
+  55% { opacity: 1; transform: scale(1.12); }
+  75% { transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes bumperRing {
+  0% { opacity: 0; transform: scale(0.3); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+@keyframes bumperSkipIn {
+  to { opacity: 1; }
+}
+@keyframes bumperFadeOut {
+  0% { opacity: 1; visibility: visible; pointer-events: auto; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+#nufa-bumper.skip-now {
+  animation: bumperFadeOut 0.35s ease forwards !important;
+  animation-delay: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #nufa-bumper { animation-duration: 0.01s; animation-delay: 0.3s; }
+  #nufa-bumper .bumper-mark, #nufa-bumper .bumper-ring, #nufa-bumper .bumper-skip { animation-duration: 0.01s; animation-delay: 0s; }
 }
 
 /* Teacher Training for English — program not live yet.

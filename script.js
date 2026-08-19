@@ -3,6 +3,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var IS_EN = document.documentElement.lang === 'en';
 
+  /* "Bumper" logo intro (gallery.html) — click/tap or Escape skips straight to the page. */
+  var bumper = document.getElementById('nufa-bumper');
+  if (bumper) {
+    var skipBumper = function () { bumper.classList.add('skip-now'); };
+    bumper.addEventListener('click', skipBumper);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') skipBumper();
+    });
+    bumper.addEventListener('animationend', function (e) {
+      if (e.animationName === 'bumperFadeOut') bumper.style.display = 'none';
+    });
+  }
+
   /* Program highlight rail — horizontal scroll-snap, prev/next buttons scroll by one card width. */
   var phiGrid = document.querySelector('.phi-grid');
   if (phiGrid) {
