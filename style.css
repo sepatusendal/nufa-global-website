@@ -435,7 +435,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible {
   text-align: center;
   margin-top: 22px;
 }
-.hero-trust .flags { font-size: 18px; letter-spacing: 4px; }
+.hero-trust .flags { display: inline-flex; align-items: center; gap: 6px; }
+.hero-trust .hflag { width: 22px; height: auto; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,0.35); display: inline-block; }
 .hero-trust p {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.55);
