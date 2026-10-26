@@ -2679,3 +2679,50 @@ section, #contact, #cta-banner { scroll-margin-top: 90px; }
 /* Teacher Training for English — program not live yet.
    Toggle back on by deleting this rule (all markup stays intact). */
 .tt-hidden { display: none !important; }
+
+/* ============ ABOUT: school solutions + proof ============ */
+.sol-card { position: relative; display: flex; flex-direction: column; }
+.sol-card h5 a { color: inherit; }
+.sol-card h5 a::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }
+.sol-card:hover h5 a { color: var(--coral-dark); }
+.sol-card:focus-within { outline: 2px solid var(--indigo); outline-offset: 3px; }
+.sol-card p { font-size: 14px; color: var(--ink-soft); margin-bottom: 16px; }
+.sol-card .sol-more { margin-top: auto; font-size: 13px; font-weight: 700; color: var(--coral-dark); }
+
+#proof { background: var(--paper); }
+.proof-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+.proof-stat { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; }
+.proof-stat b { display: block; font-family: var(--display); font-size: 40px; line-height: 1.1; color: var(--indigo); margin-bottom: 6px; }
+.proof-stat span { font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.proof-flags .flags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.proof-flags img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; box-shadow: 0 2px 6px rgba(20,26,51,0.25); }
+.proof-flags a { display: block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--coral-dark); }
+.proof-flags a:hover { text-decoration: underline; }
+.proof-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+.proof-logos .trusted-logo-card { min-width: 0; padding: 8px 14px; overflow: hidden; cursor: default; border: 1px solid var(--line); box-shadow: 0 6px 16px -10px rgba(20,26,51,0.25); }
+.proof-logos .trusted-logo-card img { max-width: 100%; }
+.proof-logos .trusted-logo-card.on-dark { border-color: var(--navy-soft); }
+.proof-office { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 26px; }
+.proof-office .label { display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.proof-office p { max-width: 640px; font-size: 14.5px; }
+.proof-office p a:hover { color: var(--coral-dark); text-decoration: underline; }
+
+@media (max-width: 980px) {
+  .proof-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .proof-stats { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .proof-flags { grid-column: 1 / -1; }
+  .proof-office { flex-direction: column; align-items: flex-start; }
+}
+
+/* Roadmap 2031: 5 cards fill a 3 + 2 layout instead of leaving an empty slot */
+@media (min-width: 721px) {
+  .v31-grid { grid-template-columns: repeat(6, 1fr); }
+  .v31-card { grid-column: span 2; }
+  .v31-card:nth-child(4):nth-last-child(2),
+  .v31-card:nth-child(5):last-child { grid-column: span 3; }
+}
+@media (max-width: 720px) {
+  .v31-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
