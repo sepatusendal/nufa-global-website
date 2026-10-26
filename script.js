@@ -34,18 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
      without touching any HTML) before wiring up the fallback/lightbox logic below. */
   var CONFIG = window.SITE_CONFIG || {};
   var heroVideo = document.getElementById('hero-video');
-  if (heroVideo) {
-    if (CONFIG.heroVideoUrl) {
-      var heroSource = heroVideo.querySelector('source');
-      if (heroSource) heroSource.src = CONFIG.heroVideoUrl;
-      else heroVideo.src = CONFIG.heroVideoUrl;
-      heroVideo.load();
-      /* Safari/iOS sometimes won't resume autoplay on its own after a
-         programmatic load() — nudge it once the new source is ready. */
-      heroVideo.play().catch(function () {});
-    }
-    if (CONFIG.heroVideoPoster) heroVideo.setAttribute('poster', CONFIG.heroVideoPoster);
-  }
+  if (heroVideo && CONFIG.heroVideoPoster) heroVideo.setAttribute('poster', CONFIG.heroVideoPoster);
   var heroVideoBtn = document.querySelector('.hero-video-btn');
   if (heroVideoBtn && CONFIG.companyProfileVideoUrl) {
     heroVideoBtn.dataset.src = CONFIG.companyProfileVideoUrl;
@@ -82,11 +71,45 @@ document.addEventListener('DOMContentLoaded', function () {
         heroVideoLayer.classList.remove('no-video');
       });
     });
-    // If after a few seconds there's still no video data at all (e.g. source file missing),
-    // hide the layer — generous delay so it doesn't race a legitimate slow load.
-    setTimeout(function () {
-      if (heroVideo.readyState === 0) heroVideoLayer.classList.add('no-video');
-    }, 4000);
+  }
+
+  /* Attach the hero clip only once the page itself has finished loading. The clip
+     is ~4MB; if the <source> carried a real src, the browser would start pulling it
+     while the render-blocking CSS is still in flight, and on a first visit that
+     pushed the first paint back by seconds. The HTML keeps the path in data-src,
+     and SITE_CONFIG.heroVideoUrl can override it. */
+  if (heroVideo) {
+    var heroVideoStarted = false;
+    var startHeroVideo = function () {
+      if (heroVideoStarted) return;
+      var heroSource = heroVideo.querySelector('source');
+      var heroUrl = CONFIG.heroVideoUrl || (heroSource && heroSource.getAttribute('data-src'));
+      if (!heroUrl) {
+        if (heroVideoLayer) heroVideoLayer.classList.add('no-video');
+        return;
+      }
+      heroVideoStarted = true;
+      if (heroSource) heroSource.src = heroUrl;
+      else heroVideo.src = heroUrl;
+      heroVideo.load();
+      /* Safari/iOS sometimes won't resume autoplay on its own after a
+         programmatic load() — nudge it once the new source is ready. */
+      heroVideo.play().catch(function () {});
+      // If after a few seconds there's still no video data at all (e.g. source file missing),
+      // hide the layer — generous delay so it doesn't race a legitimate slow load.
+      if (heroVideoLayer) {
+        setTimeout(function () {
+          if (heroVideo.readyState === 0) heroVideoLayer.classList.add('no-video');
+        }, 4000);
+      }
+    };
+    if (document.readyState === 'complete') {
+      startHeroVideo();
+    } else {
+      window.addEventListener('load', startHeroVideo);
+      // Don't wait forever if some third-party asset stalls the load event.
+      setTimeout(startHeroVideo, 5000);
+    }
   }
 
   /* Navbar scroll state */
@@ -183,8 +206,11 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Show the real photo (or video poster frame) on a gallery/highlight card
      once it's confirmed to load, instead of leaving the gradient placeholder
      up forever. Video cards keep their play button/badge overlay since they
-     still need a click to actually play in the lightbox. */
-  document.querySelectorAll('.gitem[data-type="photo"], .gitem[data-type="video"]').forEach(function (item) {
+     still need a click to actually play in the lightbox.
+     Images are fetched lazily, just before a card scrolls into view. Loading every
+     card up front meant ~7MB of JPGs (including carousel cards nobody had scrolled
+     to yet, and hidden ones) on the first visit. */
+  function loadGalleryThumb(item) {
     var src = item.dataset.type === 'video' ? item.dataset.poster : item.dataset.src;
     var thumb = item.querySelector('.thumb');
     if (!src || !thumb) return;
@@ -196,7 +222,20 @@ document.addEventListener('DOMContentLoaded', function () {
       if (icon) icon.remove();
     };
     img.src = src;
-  });
+  }
+  var galleryThumbItems = document.querySelectorAll('.gitem[data-type="photo"], .gitem[data-type="video"]');
+  if ('IntersectionObserver' in window) {
+    var thumbIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        thumbIO.unobserve(entry.target);
+        loadGalleryThumb(entry.target);
+      });
+    }, { rootMargin: '300px' });
+    galleryThumbItems.forEach(function (item) { thumbIO.observe(item); });
+  } else {
+    galleryThumbItems.forEach(loadGalleryThumb);
+  }
 
   /* Gallery filter */
   var gfilters = document.querySelectorAll('.gfilter');
