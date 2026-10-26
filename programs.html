@@ -279,21 +279,126 @@
     <div class="section-head reveal" style="margin-top:70px;">
       <div class="eyebrow">Produk & Layanan</div>
       <h2 class="section-title">Daftar lengkap produk NUFA Global</h2>
+      <p>Arahkan kursor atau ketuk salah satu kartu untuk melihat isi program, format pelaksanaan, dan hasil yang didapat sekolah Anda.</p>
     </div>
-    <div class="wwd-grid reveal">
-      <div class="wwd-card"><span class="ico">🏫</span><h5>English Course for Schools</h5></div>
-      <div class="wwd-card"><span class="ico">🏕️</span><h5>English Camp</h5></div>
-      <div class="wwd-card"><span class="ico">✈️</span><h5>International Immersion</h5></div>
-      <div class="wwd-card"><span class="ico">🧑‍🏫</span><h5>Native English Speaker Placement</h5></div>
-      <div class="wwd-card"><span class="ico">🇦🇺</span><h5>Study Abroad Australia</h5></div>
-      <!-- Hidden for now — uncomment to bring back
-      <div class="wwd-card"><span class="ico">🎓</span><h5>Teacher Development Program</h5></div>
-      <div class="wwd-card"><span class="ico">🤖</span><h5>Robotics & STEM Program</h5></div>
-      <div class="wwd-card"><span class="ico">🌐</span><h5>School Internationalization Program</h5></div>
-      <div class="wwd-card"><span class="ico">🔄</span><h5>Student Exchange</h5></div>
-      <div class="wwd-card"><span class="ico">🤝</span><h5>Teacher Exchange</h5></div>
-      <div class="wwd-card"><span class="ico">📋</span><h5>Educational Consulting</h5></div>
-      <div class="wwd-card"><span class="ico">🌏</span><h5>Cultural Exchange</h5></div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="pxc-i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="pxc-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="pxc-i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></symbol>
+    </svg>
+    <div class="pxc reveal" id="program-cards">
+      <article class="pxc-card is-active" style="--pxc-rgb:75,96,172;--pxc-pos:50% 55%;">
+        <img class="pxc-bg" src="assets/gallery/program-course-1.jpg" alt="" width="1280" height="960" loading="lazy" decoding="async">
+        <button type="button" class="pxc-head" id="pxc-h-course" aria-expanded="true" aria-controls="pxc-b-course">
+          <span class="pxc-ico" aria-hidden="true">🏫</span>
+          <span class="pxc-name">English Course for Schools</span>
+          <span class="pxc-chev" aria-hidden="true"></span>
+        </button>
+        <div class="pxc-body" id="pxc-b-course" role="region" aria-labelledby="pxc-h-course">
+          <div class="pxc-body-in"><div class="pxc-pad">
+            <div class="pxc-kicker">English Education</div>
+            <p class="pxc-desc">Program bahasa Inggris terstruktur untuk sekolah. Siswa memulai dari placement test, lalu mengikuti kurikulum berjenjang yang dirancang agar mereka aktif menggunakan bahasa Inggris, bukan sekadar menghafal tata bahasa.</p>
+            <dl class="pxc-meta">
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-users"/></svg>Untuk Siapa</dt><dd>Siswa SD–SMA</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-clock"/></svg>Format</dt><dd>Tatap Muka / Blended</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-award"/></svg>Output</dt><dd>Sertifikat &amp; Rapor Level</dd></div>
+            </dl>
+            <ul class="pxc-tags"><li>Placement Test Awal</li><li>Kurikulum Berjenjang CEFR</li><li>E-Course Mandiri</li><li>Assessment Berkala</li></ul>
+            <a href="/program-english-course" class="btn btn-primary pxc-link">Lihat Detail Program →</a>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="pxc-card" style="--pxc-rgb:241,92,93;--pxc-pos:50% 50%;">
+        <img class="pxc-bg" src="assets/gallery/program-camp-2.jpg" alt="" width="1280" height="854" loading="lazy" decoding="async">
+        <button type="button" class="pxc-head" id="pxc-h-camp" aria-expanded="false" aria-controls="pxc-b-camp">
+          <span class="pxc-ico" aria-hidden="true">🏕️</span>
+          <span class="pxc-name">English Camp</span>
+          <span class="pxc-chev" aria-hidden="true"></span>
+        </button>
+        <div class="pxc-body" id="pxc-b-camp" role="region" aria-labelledby="pxc-h-camp">
+          <div class="pxc-body-in"><div class="pxc-pad">
+            <div class="pxc-kicker">Experiential Learning</div>
+            <p class="pxc-desc">Belajar bahasa Inggris lewat pengalaman langsung selama 2–5 hari: outdoor activity, leadership camp, hingga proyek kolaboratif yang membangun kepercayaan diri siswa untuk berbicara.</p>
+            <dl class="pxc-meta">
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-users"/></svg>Untuk Siapa</dt><dd>Siswa SMP–SMA</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-clock"/></svg>Format</dt><dd>2–5 Hari, Onsite</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-award"/></svg>Output</dt><dd>Sertifikat &amp; Dokumentasi</dd></div>
+            </dl>
+            <ul class="pxc-tags"><li>Outdoor Learning</li><li>Leadership Camp</li><li>Project Based Learning</li><li>Games &amp; Ice Breaking</li></ul>
+            <a href="/program-english-camp" class="btn btn-primary pxc-link">Lihat Detail Program →</a>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="pxc-card" style="--pxc-rgb:232,163,61;--pxc-pos:50% 45%;">
+        <img class="pxc-bg" src="assets/gallery/program-immersion-1.jpg" alt="" width="1280" height="960" loading="lazy" decoding="async">
+        <button type="button" class="pxc-head" id="pxc-h-immersion" aria-expanded="false" aria-controls="pxc-b-immersion">
+          <span class="pxc-ico" aria-hidden="true">✈️</span>
+          <span class="pxc-name">International Immersion</span>
+          <span class="pxc-chev" aria-hidden="true"></span>
+        </button>
+        <div class="pxc-body" id="pxc-b-immersion" role="region" aria-labelledby="pxc-h-immersion">
+          <div class="pxc-body-in"><div class="pxc-pad">
+            <div class="pxc-kicker">International Program</div>
+            <p class="pxc-desc">Siswa merasakan langsung lingkungan belajar dan budaya internasional bersama mitra strategis kami di 8 negara: belajar di kelas, tinggal bersama keluarga lokal, dan bertukar budaya selama 7–14 hari.</p>
+            <dl class="pxc-meta">
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-users"/></svg>Untuk Siapa</dt><dd>Siswa SMA &amp; Sederajat</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-clock"/></svg>Format</dt><dd>7–14 Hari, Luar Negeri</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-award"/></svg>Output</dt><dd>Sertifikat Internasional</dd></div>
+            </dl>
+            <ul class="pxc-tags"><li>Kelas Bahasa Inggris</li><li>Homestay</li><li>Cultural Exchange</li><li>City Tour &amp; Study Visit</li></ul>
+            <a href="/program-immersion" class="btn btn-primary pxc-link">Lihat Detail Program →</a>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="pxc-card" style="--pxc-rgb:138,155,224;--pxc-pos:52% 66%;">
+        <img class="pxc-bg" src="assets/gallery/program-nes-1.jpg" alt="" width="720" height="1280" loading="lazy" decoding="async">
+        <button type="button" class="pxc-head" id="pxc-h-nes" aria-expanded="false" aria-controls="pxc-b-nes">
+          <span class="pxc-ico" aria-hidden="true">🧑‍🏫</span>
+          <span class="pxc-name">Native English Speaker Placement</span>
+          <span class="pxc-chev" aria-hidden="true"></span>
+        </button>
+        <div class="pxc-body" id="pxc-b-nes" role="region" aria-labelledby="pxc-h-nes">
+          <div class="pxc-body-in"><div class="pxc-pad">
+            <div class="pxc-kicker">Native English Speaker</div>
+            <p class="pxc-desc">Penempatan guru penutur asli bahasa Inggris ke sekolah mitra, mulai dari rekrutmen dan pelatihan, school matching sesuai karakter sekolah, hingga pendampingan visa kerja dan evaluasi performa tiap bulan.</p>
+            <dl class="pxc-meta">
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-users"/></svg>Untuk Siapa</dt><dd>Semua Jenjang</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-clock"/></svg>Format</dt><dd>Full-time / Part-time</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-award"/></svg>Output</dt><dd>Laporan Evaluasi Bulanan</dd></div>
+            </dl>
+            <ul class="pxc-tags"><li>Rekrutmen &amp; Seleksi Ketat</li><li>Pelatihan Sebelum Penempatan</li><li>School Matching</li><li>Pendampingan Visa Kerja</li></ul>
+            <a href="/program-native-speaker" class="btn btn-primary pxc-link">Lihat Detail Program →</a>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="pxc-card" style="--pxc-rgb:216,67,63;--pxc-pos:50% 50%;">
+        <img class="pxc-bg" src="assets/gallery/program-studyabroad-1.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <button type="button" class="pxc-head" id="pxc-h-studyabroad" aria-expanded="false" aria-controls="pxc-b-studyabroad">
+          <span class="pxc-ico" aria-hidden="true"><img class="pxc-flag" src="https://flagcdn.com/au.svg" alt="" width="26" height="19" loading="lazy"></span>
+          <span class="pxc-name">Study Abroad Australia</span>
+          <span class="pxc-chev" aria-hidden="true"></span>
+        </button>
+        <div class="pxc-body" id="pxc-b-studyabroad" role="region" aria-labelledby="pxc-h-studyabroad">
+          <div class="pxc-body-in"><div class="pxc-pad">
+            <div class="pxc-kicker">Study Abroad</div>
+            <p class="pxc-desc">Persiapan studi lanjut ke Australia secara menyeluruh: kursus bahasa, persiapan IELTS/PTE, jalur masuk universitas, hingga pendampingan student visa bersama mitra resmi di Australia.</p>
+            <dl class="pxc-meta">
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-users"/></svg>Untuk Siapa</dt><dd>Siswa Sekolah</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-clock"/></svg>Format</dt><dd>Sit in Class, Konsultasi 1-on-1</dd></div>
+              <div><dt><svg class="pxc-mi" aria-hidden="true"><use href="#pxc-i-award"/></svg>Output</dt><dd>Global Mindset</dd></div>
+            </dl>
+            <ul class="pxc-tags"><li>English Course Australia</li><li>University Pathway</li><li>IELTS &amp; PTE Preparation</li><li>Student Visa Assistance</li></ul>
+            <a href="/program-study-abroad" class="btn btn-primary pxc-link">Lihat Detail Program →</a>
+          </div></div>
+        </div>
+      </article>
+      <!-- Hidden for now — bring back by adding a card in the same format:
+      Teacher Development Program, Robotics & STEM Program, School Internationalization Program,
+      Student Exchange, Teacher Exchange, Educational Consulting, Cultural Exchange
       -->
     </div>
   </div>

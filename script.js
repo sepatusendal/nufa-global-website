@@ -390,6 +390,91 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /* Program expand cards (programs page). One card is open at a time: on wide screens
+     they are panels that open on hover/focus/tap, up to 1000px they become an accordion.
+     Without this script the CSS leaves every card stacked and fully open. */
+  var pxc = document.getElementById('program-cards');
+  if (pxc) {
+    var pxcCards = Array.prototype.slice.call(pxc.querySelectorAll('.pxc-card'));
+    var pxcWide = window.matchMedia('(min-width: 1001px)');
+    var pxcHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var pxcTimer = null;
+
+    var pxcSet = function (card, open) {
+      card.classList.toggle('is-active', open);
+      card.querySelector('.pxc-head').setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    var pxcOpen = function (card) {
+      pxcCards.forEach(function (c) { pxcSet(c, c === card); });
+    };
+
+    // Accordion only: opening a card collapses the one above it, which shifts the page.
+    // Once the open/close transition has finished, scroll so the opened card is in view.
+    var pxcKeepInView = function (card) {
+      var body = card.querySelector('.pxc-body');
+      var done = false;
+      var run = function () {
+        if (done) return;
+        done = true;
+        body.removeEventListener('transitionend', onEnd);
+        var r = card.getBoundingClientRect();
+        if (r.top < 84 || r.bottom > window.innerHeight) {
+          window.scrollTo({ top: r.top + window.pageYOffset - 90, behavior: 'smooth' });
+        }
+      };
+      var onEnd = function (e) {
+        if (e.target === body && e.propertyName === 'grid-template-rows') run();
+      };
+      body.addEventListener('transitionend', onEnd);
+      setTimeout(run, 900); // fallback when transitions are off (reduced motion)
+    };
+
+    pxcCards.forEach(function (card, i) {
+      var head = card.querySelector('.pxc-head');
+
+      head.addEventListener('click', function () {
+        var isOpen = card.classList.contains('is-active');
+        if (pxcWide.matches) { if (!isOpen) pxcOpen(card); }
+        else if (isOpen) pxcSet(card, false);
+        else {
+          pxcOpen(card);
+          pxcKeepInView(card);
+        }
+      });
+
+      // Mouse users: open after a short hover so a pointer sweeping across the row doesn't flicker.
+      card.addEventListener('mouseenter', function () {
+        if (!pxcWide.matches || !pxcHover.matches) return;
+        clearTimeout(pxcTimer);
+        pxcTimer = setTimeout(function () { pxcOpen(card); }, 90);
+      });
+      card.addEventListener('mouseleave', function () { clearTimeout(pxcTimer); });
+
+      // Keyboard: tabbing to a card opens it on wide screens; arrows/Home/End move between cards.
+      head.addEventListener('focus', function () { if (pxcWide.matches) pxcOpen(card); });
+      head.addEventListener('keydown', function (e) {
+        var next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % pxcCards.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + pxcCards.length) % pxcCards.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = pxcCards.length - 1;
+        if (next < 0) return;
+        e.preventDefault();
+        pxcCards[next].querySelector('.pxc-head').focus();
+      });
+    });
+
+    // The row layout always needs one open card; the accordion may have none.
+    var pxcEnsureOne = function () {
+      if (pxcWide.matches && !pxc.querySelector('.pxc-card.is-active')) pxcOpen(pxcCards[0]);
+    };
+    if (pxcWide.addEventListener) pxcWide.addEventListener('change', pxcEnsureOne);
+    else if (pxcWide.addListener) pxcWide.addListener(pxcEnsureOne);
+
+    pxcEnsureOne();
+    pxc.classList.add('is-ready');
+  }
+
   /* Smooth scroll for in-page anchors */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
