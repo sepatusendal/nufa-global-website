@@ -55,6 +55,10 @@ RewriteRule ^([^.]+)$ $1.html [NC,L]
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
+# Never show a file listing for a folder that has no index page (e.g. /assets/data/,
+# /assets/gallery/). Individual files stay reachable; only the folder index goes away.
+Options -Indexes
+
 # Custom 404 so a mistyped/removed URL sends visitors back into the site
 # instead of a bare server error page.
 ErrorDocument 404 /404.html
